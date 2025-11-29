@@ -47,14 +47,18 @@ export default function TicTacToe() {
         return (
             <button
                 key={i}
-                className={`w-24 h-24 min-w-[6rem] min-h-[6rem] border border-gray-500 text-4xl font-bold flex items-center justify-center transition-all duration-300 ${
-                    isWinningSquare ? 'bg-green-300' : 'bg-white'
-                }`}
+                className={`w-20 h-20 text-3xl font-bold flex items-center justify-center transition-all duration-300 rounded-lg border-2 ${
+                    isWinningSquare 
+                        ? 'bg-green-200 border-green-400 shadow-lg' 
+                        : squares[i] 
+                            ? 'bg-gray-50 border-gray-300' 
+                            : 'bg-white border-gray-200 hover:bg-indigo-50 hover:border-indigo-300 hover:shadow-md'
+                } ${squares[i] === 'X' ? 'text-blue-600' : 'text-red-500'}`}
                 onClick={() => handleClick(i)}
             >
-        <span className={`${squares[i] ? 'animate-fade-in' : ''}`}>
-          {squares[i]}
-        </span>
+                <span className={`${squares[i] ? 'animate-pulse' : ''}`}>
+                    {squares[i]}
+                </span>
             </button>
         );
     }
@@ -65,11 +69,19 @@ export default function TicTacToe() {
         : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-white text-black">
-            <div className="mb-4 text-xl font-semibold">{status}</div>
-            <div className="grid grid-cols-3 gap-0 border border-gray-500">
+        <div className="flex flex-col items-center justify-center">
+            <div className="mb-6 text-2xl font-bold text-indigo-700 bg-white px-6 py-3 rounded-lg shadow-md">
+                {status}
+            </div>
+            <div className="grid grid-cols-3 gap-2 p-4 bg-white rounded-xl shadow-lg">
                 {Array.from({ length: 9 }).map((_, i) => renderSquare(i))}
             </div>
+            <button 
+                onClick={resetGame}
+                className="mt-6 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors shadow-md"
+            >
+                New Game
+            </button>
         </div>
     );
 }

@@ -28,7 +28,7 @@ function Header() {
                 </Link>
 
                 {/* Horizontal nav – no bullets, no padding */}
-                <ul className="flex items-center !space-x-6 list-none bg-red-500 p-2">
+                <ul className="flex items-center space-x-6 list-none">
                     {navItems.map((item) => (
                         <li key={item.href}>
                             <Link
@@ -52,9 +52,9 @@ function Header() {
 
 export default function App({ Component, pageProps }) {
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-900">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900">
             <Header />
-            <main className="container mx-auto p-4">
+            <main>
                 <Component {...pageProps} />
             </main>
         </div>
