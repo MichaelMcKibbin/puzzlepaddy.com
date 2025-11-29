@@ -28,7 +28,7 @@ function Header() {
                 </Link>
 
                 {/* Horizontal nav – no bullets, no padding */}
-                <ul className="flex items-center space-x-6 list-none">
+                <ul className="flex items-center !space-x-6 list-none bg-red-500 p-2">
                     {navItems.map((item) => (
                         <li key={item.href}>
                             <Link
