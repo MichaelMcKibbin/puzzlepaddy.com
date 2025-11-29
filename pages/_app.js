@@ -28,7 +28,7 @@ function Header() {
                 </Link>
 
                 {/* Horizontal nav – no bullets, no padding */}
-                <ul className="flex items-center space-x-6 list-none nav-fallback" style={{gap: '24px'}}>
+                <ul className="flex items-center space-x-6 list-none">
                     {navItems.map((item) => (
                         <li key={item.href}>
                             <Link
