@@ -3,7 +3,7 @@ name: Deploy PuzzlePaddy to Hostinger
 on:
   push:
     branches:
-      - 'master'   # change to 'main' if your default branch is main
+      - 'master'   # or main
 
 jobs:
   build-and-deploy:
@@ -22,13 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js app
+      - name: Build Next.js static site
         run: npm run build
-
-      - name: Export static site
-        run: npm run export
-
-      # /out now contains the static site
+        # Next.js will automatically generate ./out due to output: 'export'
 
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -40,4 +36,5 @@ jobs:
           protocol: ftp
           local-dir: ./out
           server-dir: /public_html/
+          log-level: verbose
           dangerous-clean-slate: true

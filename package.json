@@ -7,7 +7,6 @@
   },
   "scripts": {
     "build": "next build",
-    "export": "next export",
     "build:export": "next build && next export",
     "start": "next start",
     "dev": "next dev",
