@@ -3,7 +3,7 @@ name: Deploy PuzzlePaddy to Hostinger
 on:
   push:
     branches:
-      - 'master' # or main — use your default branch name
+      - 'master'   # change to 'main' if your default branch is main
 
 jobs:
   build-and-deploy:
@@ -31,13 +31,13 @@ jobs:
       # /out now contains the static site
 
       - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.HOSTINGER_FTP_HOST }}
           username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          port: 21
-          protocol: ftps
+          port: ${{ secrets.HOSTINGER_FTP_PORT }}
+          protocol: ftp
           local-dir: ./out
           server-dir: /public_html/
           dangerous-clean-slate: true
