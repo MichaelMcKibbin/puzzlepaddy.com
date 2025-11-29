@@ -3,7 +3,7 @@ name: Deploy PuzzlePaddy to Hostinger
 on:
   push:
     branches:
-      - main   # or 'master' — use your default branch name
+      - 'master' # or main — use your default branch name
 
 jobs:
   build-and-deploy:
