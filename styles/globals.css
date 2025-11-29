@@ -9,23 +9,4 @@ body {
     padding: 0;
 }
 
-/* === Nav menu spacing override === */
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; /* 24px between menu items */
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
 
-.nav-menu li {
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.nav-menu a {
-    display: inline-block;
-    padding: 0.25rem 0.5rem; /* a bit of clickable area */
-}
