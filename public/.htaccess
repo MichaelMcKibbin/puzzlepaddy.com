@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Handle client-side routing for Next.js static export
+RewriteBase /
+
+# Don't rewrite files or directories that exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# For any other request, try the file with .html extension
+RewriteRule ^([^.]+)$ $1.html [L]
+
+# If that doesn't exist, serve index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . /index.html [L]
