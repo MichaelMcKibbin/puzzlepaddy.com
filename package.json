@@ -10,7 +10,8 @@
     "export": "next export",
     "build:export": "next build && next export",
     "start": "next start",
-    "dev": "next dev"
+    "dev": "next dev",
+    "deploy": "npm run build && npm run export"
   },
   "dependencies": {
     "next": "^15.3.2",
