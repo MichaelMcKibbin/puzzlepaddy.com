@@ -19,11 +19,11 @@ const ROW_CLUES = [
 ];
 
 const COL_CLUES = [
-    [2],
-    [1, 3],
+    [3],
+    [1,1,1],
     [5],
-    [1, 3],
-    [2],
+    [1,1,1],
+    [3],
 ];
 
 export default function NonogramPage() {
@@ -65,7 +65,10 @@ export default function NonogramPage() {
 
                     <div className="flex items-start mb-6 p-4 bg-white rounded-xl shadow-lg">
                         {/* Row clues */}
-                        <div className="grid grid-rows-5 items-center justify-items-end text-sm pr-2 h-40">
+                        <div className="flex flex-col justify-items-end text-sm pr-2">
+                            {/* Spacer for column clues */}
+                            <div className="h-8 mb-1"></div>
+                            {/* Row clues aligned with grid rows */}
                             {ROW_CLUES.map((clue, i) => (
                                 <div key={i} className="min-w-10 text-right h-8 flex items-center justify-end">
                                     {clue.join(" ")}

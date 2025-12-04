@@ -73,6 +73,25 @@ export default function SlidingTilePage() {
         setWon(false);
     }
 
+    function scramble() {
+        const shuffled = [...createSolvedBoard()];
+        let emptyIndex = shuffled.indexOf(0);
+
+        for (let i = 0; i < 100; i++) {
+            const neighbors = getNeighbors(emptyIndex);
+            const swapWith = neighbors[Math.floor(Math.random() * neighbors.length)];
+            [shuffled[emptyIndex], shuffled[swapWith]] = [
+                shuffled[swapWith],
+                shuffled[emptyIndex],
+            ];
+            emptyIndex = swapWith;
+        }
+
+        setBoard(shuffled);
+        setMoves(0);
+        setWon(false);
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
             <div className="max-w-2xl mx-auto px-4">
@@ -107,12 +126,20 @@ export default function SlidingTilePage() {
                         </div>
                     )}
 
-                    <button 
-                        onClick={reset}
-                        className="px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-md font-semibold"
-                    >
-                        Reset to Solved
-                    </button>
+                    <div className="space-x-2">
+                        <button 
+                            onClick={scramble}
+                            className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors shadow-md"
+                        >
+                            New Game
+                        </button>
+                        <button 
+                            onClick={reset}
+                            className="px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-md font-semibold"
+                        >
+                            Reset to Solved
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

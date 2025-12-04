@@ -10,21 +10,10 @@ export default function Games() {
                 <Link href="/games/tictactoe" className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-indigo-300">
                     <h3 className="text-lg font-semibold text-gray-800">Tic-Tac-Toe</h3>
                 </Link>
-                <Link href="/games/mastermind" className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-indigo-300">
-                    <h3 className="text-lg font-semibold text-gray-800">Mastermind</h3>
-                </Link>
-                <Link href="/games/word-scramble" className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-indigo-300">
-                    <h3 className="text-lg font-semibold text-gray-800">Word Scramble</h3>
-                </Link>
-                <Link href="/games/mini-sudoku" className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-indigo-300">
-                    <h3 className="text-lg font-semibold text-gray-800">Mini Sudoku</h3>
-                </Link>
                 <Link href="/games/nonogram" className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-indigo-300">
                     <h3 className="text-lg font-semibold text-gray-800">Nonogram</h3>
                 </Link>
-                <Link href="/games/sliding-tile" className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-indigo-300">
-                    <h3 className="text-lg font-semibold text-gray-800">Sliding Tile Puzzle</h3>
-                </Link>
+
             </div>
         </div>
     );
