@@ -63,11 +63,11 @@ export default function NonogramPage() {
                         Click squares to fill them and match the clues
                     </div>
 
-                    <div className="flex items-start gap-2 mb-6 p-4 bg-white rounded-xl shadow-lg">
+                    <div className="flex items-start mb-6 p-4 bg-white rounded-xl shadow-lg">
                         {/* Row clues */}
-                        <div className="grid grid-rows-5 items-center justify-items-end text-sm pr-1 h-40">
+                        <div className="grid grid-rows-5 items-center justify-items-end text-sm pr-2 h-40">
                             {ROW_CLUES.map((clue, i) => (
-                                <div key={i} className="min-w-10 text-right">
+                                <div key={i} className="min-w-10 text-right h-8 flex items-center justify-end">
                                     {clue.join(" ")}
                                 </div>
                             ))}
@@ -75,9 +75,9 @@ export default function NonogramPage() {
 
                         {/* Column clues + grid */}
                         <div>
-                            <div className="grid grid-cols-5 ml-8 mb-1">
+                            <div className="grid grid-cols-5 mb-1">
                                 {COL_CLUES.map((clue, i) => (
-                                    <div key={i} className="whitespace-pre text-xs text-center h-8 w-8">
+                                    <div key={i} className="whitespace-pre text-xs text-center h-8 w-8 flex items-end justify-center">
                                         {clue.join("\n")}
                                     </div>
                                 ))}
