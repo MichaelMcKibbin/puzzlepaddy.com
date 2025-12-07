@@ -122,19 +122,19 @@ export default function SnakePage() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-green-400 font-mono flex flex-col items-center justify-center p-4">
-            <h1 className="text-4xl font-bold mb-4 text-green-300">SNAKE</h1>
+        <div className="min-h-screen bg-black text-green-400 font-mono flex flex-col items-center justify-start p-2 sm:justify-center sm:p-4">
+            <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-green-300">SNAKE</h1>
             
-            <div className="mb-4 text-xl">
+            <div className="mb-2 sm:mb-4 text-lg sm:text-xl">
                 SCORE: {score}
             </div>
 
             <div 
-                className="grid bg-black border-2 border-green-400 mb-4"
+                className="grid bg-black border-2 border-green-400 mb-2 sm:mb-4 max-w-full"
                 style={{
                     gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`,
-                    width: '400px',
-                    height: '400px'
+                    width: 'min(90vw, 400px)',
+                    height: 'min(90vw, 400px)'
                 }}
             >
                 {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, index) => {
@@ -163,27 +163,27 @@ export default function SnakePage() {
             </div>
 
             {!gameStarted && !gameOver && (
-                <div className="text-center mb-4">
-                    <div className="text-2xl mb-2">PRESS SPACE OR TAP ARROW TO START</div>
-                    <div className="text-lg mb-2">USE ARROW KEYS OR BUTTONS TO MOVE</div>
+                <div className="text-center mb-2 sm:mb-4">
+                    <div className="text-lg sm:text-2xl mb-1 sm:mb-2">PRESS SPACE OR TAP ARROW TO START</div>
+                    <div className="text-sm sm:text-lg mb-1 sm:mb-2">USE ARROW KEYS OR BUTTONS TO MOVE</div>
                 </div>
             )}
 
             {gameStarted && !gameOver && (
-                <div className="text-center mb-4">
-                    <div className="text-2xl mb-2">Eat all the apples!</div>
-                    <div className="text-lg mb-2">Avoid the walls, and don't bite yourself!</div>
+                <div className="text-center mb-2 sm:mb-4">
+                    <div className="text-lg sm:text-2xl mb-1 sm:mb-2">Eat all the apples!</div>
+                    <div className="text-sm sm:text-lg mb-1 sm:mb-2">Avoid the walls, and don't bite yourself!</div>
                 </div>
             )}
 
             {gameOver && (
-                <div className="text-center mb-4">
-                    <div className="text-lg mb-2">FINAL SCORE: {score}</div>
-                    <div className="text-2xl mb-2 text-red-400">GAME OVER</div>
+                <div className="text-center mb-2 sm:mb-4">
+                    <div className="text-sm sm:text-lg mb-1 sm:mb-2">FINAL SCORE: {score}</div>
+                    <div className="text-lg sm:text-2xl mb-1 sm:mb-2 text-red-400">GAME OVER</div>
                 </div>
             )}
 
-            <div className="grid grid-cols-3 gap-2 mb-4 w-32">
+            <div className="grid grid-cols-3 gap-2 mb-2 sm:mb-4 w-32">
                 <div></div>
                 <button 
                     onClick={() => handleDirectionChange({ x: 0, y: -1 })}

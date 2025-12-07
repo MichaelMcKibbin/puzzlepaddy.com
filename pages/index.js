@@ -21,7 +21,7 @@ export default function Home() {
                         Automatic updates deployed via GitHub Actions.
                     </p>
                     <p className="text-xs text-gray-500">
-                        © {new Date().getFullYear()} PuzzlePaddy.com. All rights reserved. • Created by Michael McKibbin
+                        © {new Date().getFullYear()} PuzzlePaddy.com. All rights reserved. • A work in progress by Michael McKibbin
                     </p>
                 </div>
             </footer>
