@@ -1,36 +1,35 @@
 // /pages/games/sliding-tile.js
 import { useEffect, useState } from "react";
 
-const SIZE = 3;
-
-function createSolvedBoard() {
+function createSolvedBoard(size) {
     // 0 is the empty tile
-    return Array.from({ length: SIZE * SIZE }, (_, i) => (i + 1) % (SIZE * SIZE));
+    return Array.from({ length: size * size }, (_, i) => (i + 1) % (size * size));
 }
 
-function getNeighbors(index) {
-    const row = Math.floor(index / SIZE);
-    const col = index % SIZE;
+function getNeighbors(index, size) {
+    const row = Math.floor(index / size);
+    const col = index % size;
     const neighbors = [];
-    if (row > 0) neighbors.push(index - SIZE);
-    if (row < SIZE - 1) neighbors.push(index + SIZE);
+    if (row > 0) neighbors.push(index - size);
+    if (row < size - 1) neighbors.push(index + size);
     if (col > 0) neighbors.push(index - 1);
-    if (col < SIZE - 1) neighbors.push(index + 1);
+    if (col < size - 1) neighbors.push(index + 1);
     return neighbors;
 }
 
 export default function SlidingTilePage() {
-    const [board, setBoard] = useState(createSolvedBoard);
+    const [size, setSize] = useState(3);
+    const [board, setBoard] = useState(() => createSolvedBoard(3));
     const [moves, setMoves] = useState(0);
     const [won, setWon] = useState(false);
 
     // Shuffle by doing random valid moves from solved state (always solvable)
     useEffect(() => {
-        const shuffled = [...createSolvedBoard()];
+        const shuffled = [...createSolvedBoard(size)];
         let emptyIndex = shuffled.indexOf(0);
 
         for (let i = 0; i < 100; i++) {
-            const neighbors = getNeighbors(emptyIndex);
+            const neighbors = getNeighbors(emptyIndex, size);
             const swapWith = neighbors[Math.floor(Math.random() * neighbors.length)];
             [shuffled[emptyIndex], shuffled[swapWith]] = [
                 shuffled[swapWith],
@@ -42,12 +41,12 @@ export default function SlidingTilePage() {
         setBoard(shuffled);
         setMoves(0);
         setWon(false);
-    }, []);
+    }, [size]);
 
     function handleTileClick(index) {
         if (won) return;
         const emptyIndex = board.indexOf(0);
-        const neighbors = getNeighbors(emptyIndex);
+        const neighbors = getNeighbors(emptyIndex, size);
         if (!neighbors.includes(index)) return;
 
         const newBoard = [...board];
@@ -62,23 +61,23 @@ export default function SlidingTilePage() {
     }
 
     function isSolved(b) {
-        const solved = createSolvedBoard();
+        const solved = createSolvedBoard(size);
         return b.every((v, i) => v === solved[i]);
     }
 
-    function reset() {
-        const solved = createSolvedBoard();
+    function solve() {
+        const solved = createSolvedBoard(size);
         setBoard(solved);
         setMoves(0);
         setWon(false);
     }
 
     function scramble() {
-        const shuffled = [...createSolvedBoard()];
+        const shuffled = [...createSolvedBoard(size)];
         let emptyIndex = shuffled.indexOf(0);
 
         for (let i = 0; i < 100; i++) {
-            const neighbors = getNeighbors(emptyIndex);
+            const neighbors = getNeighbors(emptyIndex, size);
             const swapWith = neighbors[Math.floor(Math.random() * neighbors.length)];
             [shuffled[emptyIndex], shuffled[swapWith]] = [
                 shuffled[swapWith],
@@ -102,12 +101,28 @@ export default function SlidingTilePage() {
                         Click tiles next to the empty space to slide them
                     </div>
 
-                    <div className="grid grid-cols-3 gap-2 mb-6 p-4 bg-white rounded-xl shadow-lg">
+                    <div className="mb-6 flex gap-2">
+                        {[3, 4, 5].map(s => (
+                            <button
+                                key={s}
+                                onClick={() => setSize(s)}
+                                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                                    size === s 
+                                        ? 'bg-indigo-600 text-white' 
+                                        : 'bg-white border border-gray-300 hover:bg-gray-50'
+                                }`}
+                            >
+                                {s}×{s}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className={`grid gap-2 mb-6 p-4 bg-white rounded-xl shadow-lg`} style={{gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))`}}>
                         {board.map((value, idx) => (
                             <button
                                 key={idx}
                                 onClick={() => handleTileClick(idx)}
-                                className={`w-16 h-16 rounded-xl border border-gray-300 text-2xl font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 transition-colors shadow-md ${
+                                className={`${size === 3 ? 'w-16 h-16 text-2xl' : size === 4 ? 'w-12 h-12 text-lg' : 'w-10 h-10 text-sm'} rounded-xl border border-gray-300 font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 transition-colors shadow-md ${
                                     value === 0 ? "invisible" : "visible"
                                 }`}
                             >
@@ -134,10 +149,10 @@ export default function SlidingTilePage() {
                             New Game
                         </button>
                         <button 
-                            onClick={reset}
+                            onClick={solve}
                             className="px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-md font-semibold"
                         >
-                            Reset to Solved
+                            Solve it!
                         </button>
                     </div>
                 </div>
