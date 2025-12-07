@@ -122,7 +122,7 @@ export default function SnakePage() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-green-400 font-mono flex flex-col items-center justify-start p-2 sm:justify-center sm:p-4">
+        <div className="min-h-screen bg-blue-600 text-green-400 font-mono flex flex-col items-center justify-start p-2 sm:justify-center sm:p-4">
             <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-green-300">SNAKE</h1>
             
             <div className="mb-2 sm:mb-4 text-lg sm:text-xl">
@@ -155,7 +155,7 @@ export default function SnakePage() {
                                         : 'bg-green-500'
                                     : isFood 
                                         ? 'bg-red-500' 
-                                        : 'bg-black'
+                                        : 'bg-blue-600'
                             }`}
                         />
                     );
