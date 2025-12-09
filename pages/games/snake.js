@@ -122,15 +122,15 @@ export default function SnakePage() {
     };
 
     return (
-        <div className="min-h-screen bg-blue-600 text-green-400 font-mono flex flex-col items-center justify-start p-2 sm:justify-center sm:p-4">
-            <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-green-300">SNAKE</h1>
+        <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 text-gray-800 font-mono flex flex-col items-center justify-start p-2 sm:justify-center sm:p-4">
+            <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-emerald-700">SNAKE</h1>
             
             <div className="mb-2 sm:mb-4 text-lg sm:text-xl">
                 SCORE: {score}
             </div>
 
             <div 
-                className="grid bg-black border-2 border-green-400 mb-2 sm:mb-4 max-w-full"
+                className="grid bg-gray-100 border-4 border-emerald-600 mb-2 sm:mb-4 max-w-full"
                 style={{
                     gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`,
                     width: 'min(90vw, 400px)',
@@ -148,14 +148,14 @@ export default function SnakePage() {
                     return (
                         <div
                             key={index}
-                            className={`border border-green-900 ${
+                            className={`border border-gray-300 ${
                                 isSnake 
                                     ? isHead 
-                                        ? 'bg-green-300' 
-                                        : 'bg-green-500'
+                                        ? 'bg-emerald-700' 
+                                        : 'bg-emerald-500'
                                     : isFood 
                                         ? 'bg-red-500' 
-                                        : 'bg-blue-600'
+                                        : 'bg-white'
                             }`}
                         />
                     );
@@ -187,28 +187,28 @@ export default function SnakePage() {
                 <div></div>
                 <button 
                     onClick={() => handleDirectionChange({ x: 0, y: -1 })}
-                    className="w-10 h-10 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition-colors flex items-center justify-center"
+                    className="w-10 h-10 bg-emerald-600 text-white font-bold rounded hover:bg-emerald-700 transition-colors flex items-center justify-center"
                 >
                     ↑
                 </button>
                 <div></div>
                 <button 
                     onClick={() => handleDirectionChange({ x: -1, y: 0 })}
-                    className="w-10 h-10 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition-colors flex items-center justify-center"
+                    className="w-10 h-10 bg-emerald-600 text-white font-bold rounded hover:bg-emerald-700 transition-colors flex items-center justify-center"
                 >
                     ←
                 </button>
                 <div></div>
                 <button 
                     onClick={() => handleDirectionChange({ x: 1, y: 0 })}
-                    className="w-10 h-10 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition-colors flex items-center justify-center"
+                    className="w-10 h-10 bg-emerald-600 text-white font-bold rounded hover:bg-emerald-700 transition-colors flex items-center justify-center"
                 >
                     →
                 </button>
                 <div></div>
                 <button 
                     onClick={() => handleDirectionChange({ x: 0, y: 1 })}
-                    className="w-10 h-10 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition-colors flex items-center justify-center"
+                    className="w-10 h-10 bg-emerald-600 text-white font-bold rounded hover:bg-emerald-700 transition-colors flex items-center justify-center"
                 >
                     ↓
                 </button>
@@ -217,7 +217,7 @@ export default function SnakePage() {
 
             <button 
                 onClick={resetGame}
-                className="px-6 py-2 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition-colors"
+                className="px-6 py-2 bg-emerald-600 text-white font-bold rounded hover:bg-emerald-700 transition-colors"
             >
                 NEW GAME
             </button>
