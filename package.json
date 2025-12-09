@@ -6,10 +6,8 @@
   },
   "scripts": {
     "build": "next build",
-    "build:export": "next build && next export",
-    "start": "next start",
-    "dev": "next dev",
-    "deploy": "npm run build && npm run export"
+    "start": "next start -p $PORT",
+    "dev": "next dev"
   },
   "dependencies": {
     "next": "^15.3.2",
