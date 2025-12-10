@@ -6,7 +6,20 @@ export default async function handler(req, res) {
         return res.status(405).json({ message: "Method not allowed" });
     }
 
-    const { name, email, message } = req.body;
+    const { name, email, message, recaptcha } = req.body;
+
+    // Verify reCAPTCHA
+    const verifyResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`
+    });
+    
+    const verifyData = await verifyResponse.json();
+    
+    if (!verifyData.success) {
+        return res.status(400).json({ message: "reCAPTCHA verification failed" });
+    }
 
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,

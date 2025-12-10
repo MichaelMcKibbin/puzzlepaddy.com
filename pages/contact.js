@@ -1,9 +1,11 @@
 // /pages/contact.js
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [status, setStatus] = useState("");
+    const recaptchaRef = useRef();
 
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -11,18 +13,26 @@ export default function Contact() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        
+        const recaptchaValue = recaptchaRef.current.getValue();
+        if (!recaptchaValue) {
+            setStatus("❌ Please complete the reCAPTCHA.");
+            return;
+        }
+
         setStatus("Sending...");
 
         try {
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, recaptcha: recaptchaValue }),
             });
 
             if (response.ok) {
                 setStatus("✅ Message sent! We'll get back to you soon.");
                 setFormData({ name: "", email: "", message: "" });
+                recaptchaRef.current.reset();
             } else {
                 setStatus("❌ Failed to send message. Please try again.");
             }
@@ -80,6 +90,13 @@ export default function Contact() {
                                 required
                                 rows="5"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
+                            />
+                        </div>
+
+                        <div className="flex justify-center">
+                            <ReCAPTCHA
+                                ref={recaptchaRef}
+                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                             />
                         </div>
 
