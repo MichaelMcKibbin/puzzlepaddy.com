@@ -4,7 +4,9 @@ import Link from "next/link";
 const games = [
     { slug: 'tictactoe', name: 'Tic Tac Toe' },
     { slug: 'nonogram', name: 'Nonogram' },
-    { slug: 'snake', name: 'Snake' }
+    { slug: 'snake', name: 'Snake' },
+    { slug: 'hangman', name: 'Hangman' },
+    { slug: 'number-guess', name: 'Number Guessing' }
 ];
 
 export default function Games() {
