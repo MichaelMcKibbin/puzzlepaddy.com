@@ -5,6 +5,9 @@ const nextConfig = {
     images: {
         unoptimized: true
     },
+    generateBuildId: async () => {
+        return Date.now().toString()
+    },
     env: {
         EMAIL_HOST: process.env.EMAIL_HOST,
         EMAIL_PORT: process.env.EMAIL_PORT,

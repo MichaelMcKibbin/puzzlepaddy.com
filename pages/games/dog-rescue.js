@@ -245,7 +245,6 @@ export default function DogRescueGame() {
                     </div>
                 )}
 
-
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-2">
                     <button
                         type="button"

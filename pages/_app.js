@@ -1,5 +1,6 @@
 // /pages/_app.js
 import "../styles/globals.css";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -52,11 +53,18 @@ function Header() {
 
 export default function App({ Component, pageProps }) {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900">
-            <Header />
-            <main>
-                <Component {...pageProps} />
-            </main>
-        </div>
+        <>
+            <Head>
+                <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+                <meta httpEquiv="Pragma" content="no-cache" />
+                <meta httpEquiv="Expires" content="0" />
+            </Head>
+            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900">
+                <Header />
+                <main>
+                    <Component {...pageProps} />
+                </main>
+            </div>
+        </>
     );
 }
