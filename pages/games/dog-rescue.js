@@ -448,7 +448,7 @@ export default function DogRescueGame() {
                     </div>
 
                     <p className="mt-4 text-xs text-center text-slate-400">
-                        Made with love for a very special nurse 💙
+                        Made with love for my very special aunt Pegeen 💙
                     </p>
                 </div>
             </main>
