@@ -254,6 +254,7 @@ export default function DogRescueGame() {
     const [feedback, setFeedback] = useState(null); // { type: "correct" | "wrong", message: string }
     const [hasAnswered, setHasAnswered] = useState(false);
     const [unlockedAchievement, setUnlockedAchievement] = useState(null);
+    const [showAchievementPopup, setShowAchievementPopup] = useState(false);
 
     const currentDog = DOG_SCENES[currentIndex];
 
@@ -271,6 +272,7 @@ export default function DogRescueGame() {
             );
             if (newlyUnlocked) {
                 setUnlockedAchievement(newlyUnlocked);
+                setShowAchievementPopup(true);
             }
 
             setFeedback({
@@ -301,10 +303,51 @@ export default function DogRescueGame() {
         setHasAnswered(false);
         setCurrentIndex(0);
         setUnlockedAchievement(null);
+        setShowAchievementPopup(false);
+    };
+
+    const handleContinuePlaying = () => {
+        setShowAchievementPopup(false);
+    };
+
+    const handleTakeBreak = () => {
+        setShowAchievementPopup(false);
+        handleReset();
     };
 
     return (
-        <main className="min-h-screen bg-gradient-to-b from-sky-50 to-blue-100 flex items-center justify-center px-4 py-8">
+        <>
+            {/* Achievement Popup */}
+            {showAchievementPopup && unlockedAchievement && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl">
+                        <div className="text-center">
+                            <div className="text-4xl mb-3">🐕🦺</div>
+                            <h3 className="text-xl font-bold text-violet-800 mb-2">
+                                {unlockedAchievement.title}
+                            </h3>
+                            <p className="text-violet-700 text-sm mb-4">
+                                {unlockedAchievement.message}
+                            </p>
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={handleContinuePlaying}
+                                    className="flex-1 bg-sky-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-sky-700 transition"
+                                >
+                                    Keep Playing 🐾
+                                </button>
+                                <button
+                                    onClick={handleTakeBreak}
+                                    className="flex-1 border border-slate-300 text-slate-600 px-4 py-2 rounded-xl font-medium hover:bg-slate-50 transition"
+                                >
+                                    Take a Break
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <main className="min-h-screen bg-gradient-to-b from-sky-50 to-blue-100 flex items-center justify-center px-4 py-8">
             <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 sm:p-8">
                 <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                     <div>
@@ -430,5 +473,6 @@ export default function DogRescueGame() {
                 </p>
             </div>
         </main>
+        </>
     );
 }
