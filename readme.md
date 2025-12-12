@@ -101,6 +101,39 @@ This runs the Next.js server with API routes and SSR capabilities.
 
 Automatic deployment via GitHub webhook to Hostinger's Node.js hosting.
 
+### Static vs Dynamic Pages
+After running ```npm run build```, the Next.js server will generate static HTML pages for each page in the ```/pages``` directory.  
+The contact page is an example of a dynamic page, and requires an SSR deployment.  
+After building, the file structure will look a little like this:
+
+```Route (pages)                                Size  First Load JS    
+┌ ○ /                                       877 B        99.3 kB
+├   /_app                                     0 B        98.5 kB
+├ ○ /404                                  1.27 kB        99.7 kB
+├ ○ /about                                  305 B        98.8 kB
+├ ƒ /api/contact                              0 B        98.5 kB
+├ ○ /contact                              4.87 kB         103 kB
+├ ○ /games                                  636 B        99.1 kB
+├ ○ /games/dog-rescue                     3.33 kB         102 kB
+├ ○ /games/hangman                        1.44 kB        99.9 kB
+├ ○ /games/nonogram                       1.29 kB        99.7 kB
+├ ○ /games/number-guess                   1.92 kB         100 kB
+├ ○ /games/snake                          1.59 kB         100 kB
+├ ○ /games/tictactoe                      1.73 kB         100 kB
+├ ○ /puzzles                                612 B        99.1 kB
+├ ○ /puzzles/mastermind                   1.54 kB         100 kB
+├ ○ /puzzles/mini-sudoku                  2.06 kB         101 kB
+├ ○ /puzzles/sliding-tile                 1.31 kB        99.8 kB
+└ ○ /puzzles/word-scramble                1.29 kB        99.7 kB
++ First Load JS shared by all              103 kB
+  ├ chunks/framework-acd67e14855de5a2.js  57.7 kB
+  ├ chunks/main-c52fafc302c2483a.js         35 kB
+  └ other shared chunks (total)           10.7 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand```
+
+
 ### 🔒 Security Notes
 
 Do NOT commit:

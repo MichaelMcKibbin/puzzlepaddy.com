@@ -349,7 +349,7 @@ export default function DogRescueGame() {
             )}
             <main className="min-h-screen bg-gradient-to-b from-sky-50 to-blue-100 flex items-center justify-center px-4 py-8">
                 <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 sm:p-8">
-                    <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                    <header className="flex flex-row items-center justify-between gap-3 mb-6">
                         <div className="flex-1 min-w-0">
                             <h1 className="text-xl sm:text-3xl font-bold text-slate-800">
                                 Dog Rescue 🩺🐶
