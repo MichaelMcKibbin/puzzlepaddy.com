@@ -1,7 +1,7 @@
 {
   "devDependencies": {},
   "scripts": {
-    "build": "rm -rf .next && next build",
+    "build": "next build",
     "start": "next start -p $PORT",
     "dev": "next dev"
   },

@@ -309,7 +309,7 @@ export default function DogRescueGame() {
                 <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                     <div>
                         <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">
-                            Nurse&apos;s Dog Rescue 🩺🐶
+                            Dog Rescue Nurse 🩺🐶
                         </h1>
                         <p className="text-slate-600 text-sm sm:text-base mt-1">
                             Choose the best way to care for each dog.💙
