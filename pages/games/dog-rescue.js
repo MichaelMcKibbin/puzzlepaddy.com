@@ -233,17 +233,20 @@ export default function DogRescueGame() {
                     ))}
                 </section>
 
-                {feedback && (
-                    <div
-                        className={`mb-4 rounded-xl px-4 py-3 text-sm sm:text-base ${
-                            feedback.type === "correct"
-                                ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
-                                : "bg-amber-50 text-amber-800 border border-amber-200"
-                        }`}
-                    >
-                        {feedback.message}
-                    </div>
-                )}
+                {/* Feedback message area with fixed height */}
+                <div className="min-h-[70px] mb-4">
+                    {feedback && (
+                        <div
+                            className={`rounded-xl px-4 py-3 text-sm sm:text-base ${
+                                feedback.type === "correct"
+                                    ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                                    : "bg-amber-50 text-amber-800 border border-amber-200"
+                            }`}
+                        >
+                            {feedback.message}
+                        </div>
+                    )}
+                </div>
 
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-2">
                     <button
