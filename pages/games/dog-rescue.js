@@ -152,7 +152,7 @@ export default function DogRescueGame() {
                             Nurse&apos;s Dog Rescue 🩺🐶
                         </h1>
                         <p className="text-slate-600 text-sm sm:text-base mt-1">
-                            Choose the best way to care for each dog. Perfect for a kind-hearted nurse in recovery 💙
+                            Choose the best way to care for each dog.💙
                         </p>
                     </div>
                     <div className="flex flex-col items-end text-right">
