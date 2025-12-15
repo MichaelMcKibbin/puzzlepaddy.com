@@ -28,7 +28,7 @@ const DOG_SCENES = [
     {
         id: 3,
         name: "Milo",
-        emoji: "🐕🦺",
+        emoji: "🐕",
         mood: "tired",
         description: "Milo's eyes are droopy and they keep circling their bed.",
         correctActionId: "rest",
@@ -60,7 +60,7 @@ const DOG_SCENES = [
     {
         id: 7,
         name: "Charlie",
-        emoji: "🐕🦺",
+        emoji: "🐕",
         mood: "tired",
         description: "Charlie just yawned and is slowly walking toward their favorite blanket.",
         correctActionId: "rest",
@@ -108,7 +108,7 @@ const DOG_SCENES = [
     {
         id: 13,
         name: "Zeus",
-        emoji: "🐕🦺",
+        emoji: "🐺",
         mood: "hungry",
         description: "Zeus is sitting perfectly but drooling while staring at the food cabinet.",
         correctActionId: "food",
@@ -148,7 +148,7 @@ const DOG_SCENES = [
     {
         id: 18,
         name: "Coco",
-        emoji: "🐕",
+        emoji: "🐕 ",
         mood: "thirsty",
         description: "Coco just finished playing fetch and is breathing heavily with her mouth open.",
         correctActionId: "water",
@@ -156,7 +156,7 @@ const DOG_SCENES = [
     {
         id: 19,
         name: "Bear",
-        emoji: "🐕🦺",
+        emoji: "🐕",
         mood: "tired",
         description: "Bear is standing but swaying slightly, clearly ready for a nap.",
         correctActionId: "rest",
@@ -196,7 +196,7 @@ const DOG_SCENES = [
     {
         id: 24,
         name: "Nala",
-        emoji: "🐕🦺",
+        emoji: "🐕",
         mood: "bored",
         description: "Nala is bouncing around with a rope toy, clearly wanting someone to play tug.",
         correctActionId: "play",
@@ -230,13 +230,13 @@ const ACHIEVEMENTS = [
         threshold: 25,
         title: "Golden Collar Award 🥇",
         message:
-            "25 dogs rescued! You're officially the favourite nurse in the doggy hospital.",
+            "25 dogs rescued! You're officially the favourite nurse in the doggy hospital. Time for a little break?.",
     },
     {
         threshold: 50,
         title: "Legendary Dog Guardian 🌟",
         message:
-            "50 dogs! That's a whole hospital wing of happy pups thanks to you. The dogs (and humans) are so grateful.",
+            "50 dogs! That's a whole hospital wing of happy pups thanks to you. The dogs (and humans) are so grateful. You should take a break too!",
     },
 ];
 
