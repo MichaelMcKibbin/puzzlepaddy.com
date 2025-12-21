@@ -322,7 +322,7 @@ export default function DogRescueGame() {
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
                     <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl">
                         <div className="text-center">
-                            <div className="text-4xl mb-3">🐕🦺</div>
+                            <div className="text-4xl mb-3">🐕</div>
                             <h3 className="text-xl font-bold text-violet-800 mb-2">
                                 {unlockedAchievement.title}
                             </h3>
