@@ -59,7 +59,7 @@ export default function App({ Component, pageProps }) {
                 <meta httpEquiv="Pragma" content="no-cache" />
                 <meta httpEquiv="Expires" content="0" />
             </Head>
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900">
+            <div className="min-h-screen bg-shamrocks bg-cover bg-center bg-no-repeat text-gray-900">
                 <Header />
                 <main>
                     <Component {...pageProps} />

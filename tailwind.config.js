@@ -6,6 +6,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            backgroundImage: {
+                'shamrocks': "url('/images/ShamrocksBackground.jpg')",
+            },
             animation: {
                 'fade-in': 'fadeIn 0.3s ease-in-out',
             },

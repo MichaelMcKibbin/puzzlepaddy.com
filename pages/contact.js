@@ -1,7 +1,7 @@
 // /pages/contact.js
 export default function Contact() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
+        <div className="min-h-screen py-12">
             <div className="max-w-2xl mx-auto px-4">
                 <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800">Contact</h1>
                 
