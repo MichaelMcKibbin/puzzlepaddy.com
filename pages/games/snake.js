@@ -122,7 +122,7 @@ export default function SnakePage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 text-gray-800 font-mono flex flex-col items-center justify-start p-2 sm:justify-center sm:p-4">
+        <div className="min-h-screen text-gray-800 font-mono flex flex-col items-center justify-start p-2 sm:justify-center sm:p-4">
             <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-emerald-700">SNAKE</h1>
             
             <div className="mb-2 sm:mb-4 text-lg sm:text-xl">

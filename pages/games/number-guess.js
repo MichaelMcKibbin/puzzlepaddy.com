@@ -92,7 +92,7 @@ export default function NumberGuessPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-100 py-8">
+        <div className="min-h-screen py-8">
             <div className="max-w-2xl mx-auto px-4">
                 <h1 className="text-4xl font-bold text-center mb-8 text-orange-800">Number Guessing Game</h1>
                 

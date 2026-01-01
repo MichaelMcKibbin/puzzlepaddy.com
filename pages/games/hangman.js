@@ -68,7 +68,7 @@ export default function HangmanPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 py-8">
+        <div className="min-h-screen py-8">
             <div className="max-w-2xl mx-auto px-4">
                 <h1 className="text-4xl font-bold text-center mb-8 text-purple-800">Hangman</h1>
                 
