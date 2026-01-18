@@ -1,0 +1,592 @@
+{
+"Kid-Friendly Themes": {
+    "Animals": [
+      "dog",
+      "lion",
+      "dolphin",
+      "tiger",
+      "rabbit",
+      "elephant",
+      "giraffe",
+      "penguin"
+    ],
+    "Clothing": [
+      "jacket",
+      "socks",
+      "scarf",
+      "hat",
+      "gloves",
+      "boots",
+      "jeans",
+      "jumper"
+    ],
+    "Colours": [
+      "purple",
+      "orange",
+      "silver",
+      "yellow",
+      "green",
+      "crimson",
+      "teal",
+      "turquoise"
+    ],
+    "Farm Animals": [
+      "cow",
+      "sheep",
+      "pig",
+      "goat",
+      "horse",
+      "chicken",
+      "donkey",
+      "duck"
+    ],
+    "Flowers": [
+      "rose",
+      "tulip",
+      "daisy",
+      "lily",
+      "orchid",
+      "sunflower",
+      "violet",
+      "poppy"
+    ],
+    "Food": [
+      "pizza",
+      "pasta",
+      "burger",
+      "taco",
+      "noodles",
+      "salad",
+      "soup",
+      "pancake"
+    ],
+    "Fruits": [
+      "apple",
+      "banana",
+      "pear",
+      "orange",
+      "grape",
+      "mango",
+      "peach",
+      "plum"
+    ],
+    "Pets": [
+      "hamster",
+      "parrot",
+      "goldfish",
+      "cat",
+      "dog",
+      "guinea",
+      "rabbit",
+      "turtle"
+    ],
+    "Toys": [
+      "teddy",
+      "lego",
+      "yoyo",
+      "doll",
+      "puzzle",
+      "blocks",
+      "kite",
+      "marbles"
+    ],
+    "Trees": [
+      "oak",
+      "pine",
+      "birch",
+      "maple",
+      "willow",
+      "cedar",
+      "spruce",
+      "cherry"
+    ],
+    "Vegetables": [
+      "carrot",
+      "potato",
+      "onion",
+      "pepper",
+      "broccoli",
+      "cabbage",
+      "turnip",
+      "tomato"
+    ]
+  },
+  "Educational Themes": {
+    "Biology": [
+      "cell",
+      "tissue",
+      "organ",
+      "nucleus",
+      "enzyme",
+      "muscle",
+      "skeleton",
+      "bacteria"
+    ],
+    "Chemistry": [
+      "oxygen",
+      "carbon",
+      "hydrogen",
+      "nitrogen",
+      "sulphur",
+      "sodium",
+      "chlorine"
+    ],
+    "Geography": [
+      "continent",
+      "desert",
+      "island",
+      "volcano",
+      "glacier",
+      "valley",
+      "plateau"
+    ],
+    "Languages": [
+      "noun",
+      "verb",
+      "adjective",
+      "pronoun",
+      "adverb",
+      "synonym",
+      "antonym",
+      "sentence"
+    ],
+    "Math Terms": [
+      "fraction",
+      "square",
+      "angle",
+      "decimal",
+      "equation",
+      "triangle",
+      "radius",
+      "percent"
+    ],
+    "Musical Terms": [
+      "tempo",
+      "rhythm",
+      "melody",
+      "harmony",
+      "chorus",
+      "octave",
+      "guitar"
+    ],
+    "Physics": [
+      "motion",
+      "force",
+      "light",
+      "friction",
+      "gravity",
+      "current",
+      "energy",
+      "momentum"
+    ],
+    "School Subjects": [
+      "maths",
+      "history",
+      "science",
+      "english",
+      "geography",
+      "art",
+      "music",
+      "coding"
+    ],
+    "Science Terms": [
+      "gravity",
+      "atom",
+      "energy",
+      "matter",
+      "volume",
+      "density",
+      "species",
+      "circuit"
+    ]
+  },
+  "Fun & Pop-Culture Themes": {
+    "Board Games": [
+      "chess",
+      "checkers",
+      "dice",
+      "domino",
+      "scrabble",
+      "monopoly",
+      "cluedo",
+      "cards"
+    ],
+    "Fantasy Creatures": [
+      "dragon",
+      "unicorn",
+      "troll",
+      "phoenix",
+      "goblin",
+      "griffin",
+      "mermaid",
+      "werewolf"
+    ],
+    "Movie Genres": [
+      "horror",
+      "comedy",
+      "thriller",
+      "fantasy",
+      "mystery",
+      "western",
+      "romance",
+      "action"
+    ],
+    "Music Genres": [
+      "rock",
+      "jazz",
+      "reggae",
+      "hip hop",
+      "classical",
+      "folk",
+      "blues",
+      "pop"
+    ],
+    "Olympic Sports": [
+      "archery",
+      "rowing",
+      "judo",
+      "gymnastics",
+      "fencing",
+      "sailing",
+      "triathlon",
+      "swimming"
+    ],
+    "Sports": [
+      "football",
+      "tennis",
+      "rugby",
+      "cricket",
+      "hockey",
+      "boxing",
+      "golf",
+      "cycling"
+    ],
+    "Superpowers": [
+      "invisibility",
+      "flight",
+      "telepathy",
+      "speed",
+      "strength",
+      "shapeshift",
+      "healing",
+      "freeze"
+    ],
+    "Video Games": [
+      "console",
+      "pixel",
+      "level",
+      "arcade",
+      "joystick",
+      "quest",
+      "boss",
+      "avatar"
+    ]
+  },
+  "Lifestyle & Real-World Themes": {
+    "Body Parts": [
+      "elbow",
+      "ankle",
+      "wrist",
+      "shoulder",
+      "finger",
+      "stomach",
+      "eyebrow",
+      "kneecap"
+    ],
+    "Emotions": [
+      "happy",
+      "angry",
+      "nervous",
+      "excited",
+      "curious",
+      "grateful",
+      "lonely",
+      "proud"
+    ],
+    "Household Items": [
+      "lamp",
+      "mirror",
+      "sofa",
+      "pillow",
+      "blanket",
+      "curtain",
+      "rug",
+      "clock"
+    ],
+    "Jobs & Professions": [
+      "doctor",
+      "baker",
+      "pilot",
+      "teacher",
+      "nurse",
+      "chef",
+      "artist",
+      "engineer"
+    ],
+    "Kitchen Items": [
+      "spoon",
+      "kettle",
+      "toaster",
+      "whisk",
+      "plate",
+      "mug",
+      "pan",
+      "knife"
+    ],
+    "Tools": [
+      "hammer",
+      "wrench",
+      "drill",
+      "saw",
+      "pliers",
+      "chisel",
+      "ladder",
+      "tape"
+    ],
+    "Transport": [
+      "station",
+      "ticket",
+      "platform",
+      "airport",
+      "harbour",
+      "highway",
+      "bridge",
+      "tunnel"
+    ],
+    "Vehicles": [
+      "bicycle",
+      "tractor",
+      "aeroplane",
+      "scooter",
+      "motorbike",
+      "bus",
+      "train",
+      "ferry"
+    ]
+  },
+  "Nature & World Themes": {
+    "Mountains": [
+      "alps",
+      "summit",
+      "ridge",
+      "peak",
+      "valley",
+      "glacier",
+      "cliff",
+      "trail"
+    ],
+    "Natural Disasters": [
+      "earthquake",
+      "tornado",
+      "tsunami",
+      "wildfire",
+      "flood",
+      "avalanche",
+      "drought",
+      "cyclone"
+    ],
+    "Oceans & Seas": [
+      "coral",
+      "tide",
+      "reef",
+      "seaweed",
+      "current",
+      "wave",
+      "sponge",
+      "lagoon"
+    ],
+    "Rivers & Lakes": [
+      "river",
+      "stream",
+      "waterfall",
+      "rapids",
+      "delta",
+      "lake",
+      "shore",
+      "islet"
+    ],
+    "Rocks & Minerals": [
+      "granite",
+      "marble",
+      "quartz",
+      "opal",
+      "jade",
+      "topaz",
+      "amethyst",
+      "basalt"
+    ],
+    "Seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter",
+      "solstice",
+      "equinox",
+      "harvest",
+      "sunshine"
+    ],
+    "Space": [
+      "planet",
+      "orbit",
+      "galaxy",
+      "comet",
+      "meteor",
+      "rocket",
+      "satellite",
+      "asteroid"
+    ],
+    "Stars & Constellations": [
+      "star",
+      "nebula",
+      "cosmos",
+      "orion",
+      "draco",
+      "lyra",
+      "crux",
+      "ursa"
+    ],
+    "Weather": [
+      "rain",
+      "thunder",
+      "lightning",
+      "breeze",
+      "fog",
+      "frost",
+      "hail",
+      "storm"
+    ]
+  },
+  "Seasonal & Event Themes": {
+    "Back to School": [
+      "backpack",
+      "pencil",
+      "notebook",
+      "homework",
+      "teacher",
+      "classroom",
+      "lunchbox",
+      "timetable"
+    ],
+    "Birthdays": [
+      "birthday",
+      "candles",
+      "balloons",
+      "cake",
+      "present",
+      "party",
+      "confetti",
+      "wish"
+    ],
+    "Christmas": [
+      "snowman",
+      "reindeer",
+      "tinsel",
+      "santa",
+      "stocking",
+      "mistletoe",
+      "carols",
+      "presents"
+    ],
+    "Easter": [
+      "chocolate",
+      "bunny",
+      "egg",
+      "basket",
+      "spring",
+      "parade",
+      "chicks",
+      "flowers"
+    ],
+    "Halloween": [
+      "pumpkin",
+      "ghost",
+      "vampire",
+      "witch",
+      "candy",
+      "costume",
+      "skeleton",
+      "spooky"
+    ],
+    "St Patrick's Day": [
+      "shamrock",
+      "leprechaun",
+      "green",
+      "parade",
+      "luck",
+      "clover",
+      "rainbow"
+    ],
+    "Summer Holidays": [
+      "beach",
+      "sunscreen",
+      "icecream",
+      "swimming",
+      "sandcastle",
+      "picnic",
+      "camping",
+      "sunset"
+    ]
+  },
+  "Challenge / Hard Mode Themes": {
+    "Compound Words": [
+      "rainbow",
+      "toothbrush",
+      "basketball",
+      "snowball",
+      "fireplace",
+      "lighthouse",
+      "sunflower",
+      "notebook"
+    ],
+    "Long Words": [
+      "extraordinary",
+      "responsibility",
+      "international",
+      "communication",
+      "misunderstand",
+      "infrastructure",
+      "investigation",
+      "unpredictable"
+    ],
+    "Rare Words": [
+      "serendipity",
+      "ephemeral",
+      "luminous",
+      "mellifluous",
+      "sonder",
+      "labyrinth",
+      "azure",
+      "oblivion"
+    ],
+    "Silent Letters": [
+      "knight",
+      "wrist",
+      "thumb",
+      "honest",
+      "island",
+      "listen",
+      "autumn",
+      "gnome"
+    ],
+    "Tongue Twisters": [
+      "she sells",
+      "red lorry",
+      "toy boat",
+      "unique new",
+      "fresh fish",
+      "rubber baby",
+      "black bug",
+      "six slick"
+    ],
+    "Tricky Spellings": [
+      "queue",
+      "rhythm",
+      "pharaoh",
+      "vacuum",
+      "yacht",
+      "mnemonic",
+      "colonel",
+      "bourgeois"
+    ]
+  }
+}
