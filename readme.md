@@ -45,8 +45,12 @@ Live Site: https://puzzlepaddy.com/
 - ⚡ Server-side rendering for dynamic functionality
 - /games page with multiple mini-games
 - /puzzles page for logic puzzles and brain teasers
-- /contact page with recaptcha, for user feedback
 - interactive components (word puzzles, number games, etc.)
+- /contact page with recaptcha, for user feedback
+  - disabled due to limitations of the hosting package
+  - The original contact form used an API route to send form submissions via email and works in localhost.
+  - When used with a hosting package that gives full support for Node.js server applications, the contact form will work as intended.
+  - added button links instead
 
 ### 🚧 Planned Features
 - Improved site-wide styling and branding
@@ -155,13 +159,25 @@ Server includes API routes for contact form and dynamic functionality
 
 ### 🤝 Contributing
 
-This is currently a solo learning project.
+This is an ongoing personal project.
 Feel free to fork the repository or submit suggestions.
 
 ### 📜 License
+This repository is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license.
 
-MIT License.
-You may reuse or adapt components freely.
+In plain language (summary, not a substitute for the full legal text)
+✅ You may copy, share, and adapt the source code.
+✅ You must give appropriate credit, including:
+- The repository name and URL
+- The original author: Michael McKibbin (and any listed contributors)
+✅ You must indicate if you made changes.
+✅ If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+❌ You may not use these materials for commercial purposes without explicit written permission from the author.
+
+For the full legal code of this license, see the official Creative Commons page:
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+If you would like to use this material in a commercial product, course, or book, please contact the author to discuss licensing terms.
 
 ### 💬 Contact
 
