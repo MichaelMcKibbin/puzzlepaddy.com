@@ -1,5 +1,5 @@
 // javascript
-// pages/games/connect-four.js
+// pages/games/four-in-a-row.js
 import { useState } from "react";
 
 const ROWS = 6;
@@ -88,7 +88,7 @@ function computerChooseColumn(grid) {
   return -1;
 }
 
-export default function ConnectFourGame() {
+export default function FourInARowGame() {
   const [grid, setGrid] = useState(createEmptyGrid());
   const [gameOver, setGameOver] = useState(false);
   const [message, setMessage] = useState("Your turn");
@@ -162,11 +162,11 @@ export default function ConnectFourGame() {
     cell === PLAYER ? "bg-red-500" : cell === COMPUTER ? "bg-yellow-400" : "bg-transparent";
 
   return (
-    <main className="min-h-screen flex items-start justify-center py-8 bg-slate-50">
+    <main className="min-h-screen flex items-start justify-center py-8" style={{ backgroundImage: "url('/images/ShamrocksBackground.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 sm:p-8 mx-auto">
         <header className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-slate-800">Connect Four</h1>
+            <h1 className="text-2xl font-bold text-slate-800">Four-in-a-row</h1>
             <p className="text-sm text-slate-500">Get 4 in a row — horizontal, vertical or diagonal.</p>
           </div>
           <div className="text-right">
@@ -205,9 +205,13 @@ export default function ConnectFourGame() {
                     <div
                       className={`w-10 h-10 rounded-full border ${cell ? "border-transparent" : "border-slate-200"} ${cellColor(
                         cell
-                      )} ${isWinning ? "animate-pulse ring-4 ring-emerald-300 scale-105" : ""}`}
+                      )} ${isWinning ? "animate-pulse ring-4 ring-emerald-300 scale-105" : ""} flex items-center justify-center`}
                       aria-hidden="true"
-                    />
+                    >
+                      {cell ? (
+                        <img src="/images/shamrock_1.svg" alt="" aria-hidden="true" className="w-7 h-7 drop-shadow-sm" />
+                      ) : null}
+                    </div>
                   </div>
                 );
               })
