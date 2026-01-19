@@ -7,7 +7,8 @@ const games = [
     { slug: 'snake', name: 'Snake' },
     { slug: 'hangman', name: 'Hangman' },
     { slug: 'number-guess', name: 'Number Guessing' },
-    { slug: 'dog-rescue', name: 'Dog Rescue'}
+    { slug: 'dog-rescue', name: 'Dog Rescue'},
+    { slug: 'connect-four', name: 'Connect Four'}
 ];
 
 export default function Games() {
