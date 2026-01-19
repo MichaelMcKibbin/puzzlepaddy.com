@@ -126,7 +126,7 @@ export default function DogRescueGame() {
                 </div>
             )}
 
-            <main className="min-h-screen py-8 bg-slate-50">
+            <main className="min-h-screen py-8 bg-shamrocks bg-cover bg-center bg-no-repeat">
                 <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col items-stretch gap-6 mx-auto">
                     <header className="flex items-center justify-between gap-3">
                         <div className="flex-1 min-w-0">

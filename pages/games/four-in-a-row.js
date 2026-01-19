@@ -162,7 +162,7 @@ export default function FourInARowGame() {
     cell === PLAYER ? "bg-red-500" : cell === COMPUTER ? "bg-yellow-400" : "bg-transparent";
 
   return (
-    <main className="min-h-screen flex items-start justify-center py-8" style={{ backgroundImage: "url('/images/ShamrocksBackground.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+    <main className="min-h-screen flex items-start justify-center py-8 bg-shamrocks bg-cover bg-center bg-no-repeat">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 sm:p-8 mx-auto">
         <header className="flex items-center justify-between mb-4">
           <div>
