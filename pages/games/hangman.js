@@ -1,153 +1,269 @@
-// /pages/games/hangman.js
-import { useState } from "react";
+// file: `pages/games/hangman.js` (top)
+// javascript
+import { useEffect, useState } from "react";
+import ENGLISH from "../../data/theme-lists-english.json";
+import US_ENGLISH from "../../data/theme-lists-us-english.json";
 
-const WORDS = [
-    "JAVASCRIPT", "REACT", "PUZZLE", "CODING", "WEBSITE", "COMPUTER", 
-    "KEYBOARD", "MONITOR", "BROWSER", "INTERNET", "DEVELOPER", "PROGRAM",
-    "FUNCTION", "VARIABLE", "ARRAY", "OBJECT", "STRING", "NUMBER",
-    "BOOLEAN", "ALGORITHM", "DATABASE", "SERVER", "CLIENT", "FRAMEWORK"
-];
+const LANGUAGE_MAP = {
+  English: ENGLISH,
+  "US English": US_ENGLISH,
+};
 
-function getRandomWord() {
-    return WORDS[Math.floor(Math.random() * WORDS.length)];
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const WRONG_EMOJI_STAGES = [
+      "", // 0 wrong
+      "😟", // 1 wrong
+      "😰", // 2 wrong
+      "😨", // 3 wrong
+      "😱", // 4 wrong
+      "💀", // 5 wrong
+      "☠️"  // 6 wrong - game over
+    ];
+
+
+function collectThemeList(languageMap, language, themeType, theme) {
+  const groups = languageMap[language] || {};
+  if (!themeType) {
+    // flatten all words
+    return Object.values(groups)
+      .flatMap((cat) => Object.values(cat || {}))
+      .flat();
+  }
+  const typeObj = groups[themeType] || {};
+  if (!theme) {
+    return Object.values(typeObj).flat();
+  }
+  return typeObj[theme] || [];
 }
 
 export default function HangmanPage() {
-    const [word, setWord] = useState(getRandomWord());
-    const [guessedLetters, setGuessedLetters] = useState(new Set());
-    const [wrongGuesses, setWrongGuesses] = useState(0);
-    const [gameStatus, setGameStatus] = useState("playing"); // playing, won, lost
+  const languageKeys = Object.keys(LANGUAGE_MAP);
+  const [language, setLanguage] = useState(languageKeys[0] || "English");
 
-    const maxWrongGuesses = 6;
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  // derive theme groups
+  const themeGroups = LANGUAGE_MAP[language] || {};
+  const typeKeys = Object.keys(themeGroups);
+  const [themeType, setThemeType] = useState(typeKeys[0] || "");
+  const themeLists = themeGroups[themeType] || {};
+  const themeKeys = Object.keys(themeLists);
+  const [theme, setTheme] = useState(themeKeys[0] || "");
 
-    const displayWord = word
-        .split("")
-        .map(letter => guessedLetters.has(letter) ? letter : "_")
-        .join(" ");
+  const [answer, setAnswer] = useState("");
+  const [guessed, setGuessed] = useState(() => new Set());
+  const [wrongCount, setWrongCount] = useState(0);
+  const maxWrong = 6;
+  const [message, setMessage] = useState("");
 
-    const wrongLetters = Array.from(guessedLetters).filter(letter => !word.includes(letter));
+  // build current word list based on selections
+  function getCurrentWords() {
+    const list = collectThemeList(LANGUAGE_MAP, language, themeType, theme) || [];
+    // normalize: strings, uppercase, dedupe
+    const cleaned = Array.from(new Set(list.map((w) => String(w).toUpperCase())));
+    return cleaned;
+  }
 
-    function guessLetter(letter) {
-        if (guessedLetters.has(letter) || gameStatus !== "playing") return;
+  function pickRandomWord() {
+    const words = getCurrentWords();
+    if (!words || words.length === 0) return "";
+    return words[Math.floor(Math.random() * words.length)];
+  }
 
-        const newGuessedLetters = new Set([...guessedLetters, letter]);
-        setGuessedLetters(newGuessedLetters);
+  function newGame() {
+    const w = pickRandomWord();
+    setAnswer(w);
+    setGuessed(new Set());
+    setWrongCount(0);
+    setMessage("");
+  }
 
-        if (!word.includes(letter)) {
-            const newWrongGuesses = wrongGuesses + 1;
-            setWrongGuesses(newWrongGuesses);
-            
-            if (newWrongGuesses >= maxWrongGuesses) {
-                setGameStatus("lost");
-            }
-        } else {
-            // Check if word is complete
-            const isComplete = word.split("").every(letter => newGuessedLetters.has(letter));
-            if (isComplete) {
-                setGameStatus("won");
-            }
-        }
+  // reset themeType and theme when language changes
+  useEffect(() => {
+    const firstType = Object.keys(LANGUAGE_MAP[language] || {})[0] || "";
+    setThemeType(firstType);
+    const firstTheme = Object.keys(LANGUAGE_MAP[language]?.[firstType] || {})[0] || "";
+    setTheme(firstTheme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
+
+  // reset theme when themeType changes
+  useEffect(() => {
+    const firstTheme = Object.keys(LANGUAGE_MAP[language]?.[themeType] || {})[0] || "";
+    setTheme(firstTheme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [themeType]);
+
+  // start a new game whenever the selected theme changes
+  useEffect(() => {
+    if (theme) newGame();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language, themeType, theme]);
+
+  function handleGuessLetter(letter) {
+    if (!answer || guessed.has(letter) || wrongCount >= maxWrong) return;
+    const next = new Set(guessed);
+    next.add(letter);
+    setGuessed(next);
+
+    if (!answer.includes(letter)) {
+      setWrongCount((c) => c + 1);
     }
 
-    function newGame() {
-        setWord(getRandomWord());
-        setGuessedLetters(new Set());
-        setWrongGuesses(0);
-        setGameStatus("playing");
+    // check win
+    const lettersInAnswer = new Set(answer.replace(/[^A-Z]/gi, "").split(""));
+    const allGuessed = [...lettersInAnswer].every((l) => next.has(l));
+    if (allGuessed) {
+      setMessage("✅ You win!");
+    } else if (wrongCount + (answer.includes(letter) ? 0 : 1) >= maxWrong) {
+      setMessage(`❌ Game over — answer: ${answer}`);
     }
+  }
 
-    const hangmanStages = [
-        "", // 0 wrong
-        "😟", // 1 wrong
-        "😰", // 2 wrong
-        "😨", // 3 wrong
-        "😱", // 4 wrong
-        "💀", // 5 wrong
-        "☠️"  // 6 wrong - game over
-    ];
+  function displayMasked() {
+    if (!answer) return "";
+    return answer
+      .split("")
+      .map((ch) => {
+        const upper = ch.toUpperCase();
+        if (!/[A-Z]/.test(upper)) return ch; // show non-letters (spaces, hyphens)
+        return guessed.has(upper) ? upper : "_";
+      })
+      .join(" ");
+  }
 
-    return (
-        <div className="min-h-screen py-8">
-            <div className="max-w-2xl mx-auto px-4">
-                <h1 className="text-4xl font-bold text-center mb-8 text-purple-800">Hangman</h1>
-                
-                <div className="flex flex-col items-center justify-center">
-                    <div className="mb-6 text-xl font-bold text-purple-700 bg-white px-6 py-3 rounded-lg shadow-md text-center">
-                        Guess the word letter by letter!
-                    </div>
+  return (
+    <div className="min-h-screen py-8">
+      <div className="max-w-2xl mx-auto px-4">
+        <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800">Hangman</h1>
 
-                    <div className="bg-white rounded-xl shadow-lg p-8 mb-6 text-center">
-                        {/* Hangman visual */}
-                        <div className="text-8xl mb-4">
-                            {hangmanStages[wrongGuesses]}
-                        </div>
-                        
-                        {/* Wrong guesses counter */}
-                        <div className="text-lg mb-4 text-gray-600">
-                            Wrong guesses: {wrongGuesses} / {maxWrongGuesses}
-                        </div>
+        <div className="flex flex-col items-center justify-center">
+          <label className="mb-4 w-full max-w-md flex items-center gap-2">
+            <span className="font-semibold text-indigo-700">Language:</span>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
+            >
+              {languageKeys.map((lang) => (
+                <option key={lang} value={lang}>
+                  {lang}
+                </option>
+              ))}
+            </select>
+          </label>
 
-                        {/* Word display */}
-                        <div className="text-3xl font-mono font-bold mb-6 text-purple-800 tracking-wider">
-                            {displayWord}
-                        </div>
+          <label className="mb-4 w-full max-w-md flex items-center gap-2">
+            <span className="font-semibold text-indigo-700">Type:</span>
+            <select
+              value={themeType}
+              onChange={(e) => setThemeType(e.target.value)}
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
+            >
+              {typeKeys.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </label>
 
-                        {/* Game status */}
-                        {gameStatus === "won" && (
-                            <div className="text-2xl font-bold text-green-600 mb-4">
-                                🎉 You Won! 🎉
-                            </div>
-                        )}
-                        
-                        {gameStatus === "lost" && (
-                            <div className="text-2xl font-bold text-red-600 mb-4">
-                                💀 Game Over! The word was: {word}
-                            </div>
-                        )}
+          <label className="mb-6 w-full max-w-md flex items-center gap-2">
+            <span className="font-semibold text-indigo-700">Theme:</span>
+            <select
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
+            >
+              {themeKeys.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </label>
 
-                        {/* Wrong letters */}
-                        {wrongLetters.length > 0 && (
-                            <div className="mb-4">
-                                <span className="text-gray-600">Wrong letters: </span>
-                                <span className="text-red-600 font-mono">
-                                    {wrongLetters.join(", ")}
-                                </span>
-                            </div>
-                        )}
-                    </div>
+          <div className="mb-6 text-xl font-bold text-indigo-700 bg-white px-6 py-3 rounded-lg shadow-md">
+            Guess the word letter by letter!
+          </div>
 
-                    {/* Alphabet buttons */}
-                    <div className="grid grid-cols-6 sm:grid-cols-9 gap-2 mb-6 max-w-2xl">
-                        {alphabet.map(letter => (
-                            <button
-                                key={letter}
-                                onClick={() => guessLetter(letter)}
-                                disabled={guessedLetters.has(letter) || gameStatus !== "playing"}
-                                className={`w-10 h-10 font-bold rounded transition-colors ${
-                                    guessedLetters.has(letter)
-                                        ? word.includes(letter)
-                                            ? "bg-green-500 text-white"
-                                            : "bg-red-500 text-white"
-                                        : gameStatus === "playing"
-                                            ? "bg-purple-600 text-white hover:bg-purple-700"
-                                            : "bg-gray-300 text-gray-500"
-                                }`}
-                            >
-                                {letter}
-                            </button>
-                        ))}
-                    </div>
+          <div className="text-4xl font-bold tracking-widest mb-6 text-indigo-800 bg-white px-8 py-4 rounded-xl shadow-lg">
+            {displayMasked() || "—"}
+          </div>
 
-                    {/* New game button */}
-                    <button 
-                        onClick={newGame}
-                        className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-colors shadow-md"
-                    >
-                        New Game
-                    </button>
-                </div>
+<div className="mb-4">
+  <div className="flex items-center gap-4" aria-hidden>
+    <div className="text-2xl">
+      {WRONG_EMOJI_STAGES[Math.min(wrongCount, WRONG_EMOJI_STAGES.length - 1)]}
+    </div>
+
+    <div className="flex items-center gap-2">
+      {Array.from({ length: maxWrong }).map((_, i) => (
+        <span
+          key={i}
+          className={i < wrongCount ? "text-red-500 text-xl" : "text-green-500 text-xl"}
+          aria-hidden
+        >
+          {i < wrongCount ? "❌" : "❔"}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
+
+  <div className="flex flex-wrap gap-2 max-w-md">
+    {ALPHABET.map((letter) => {
+      const isGuessed = guessed.has(letter);
+      const gameOverOrWin = wrongCount >= maxWrong || message.startsWith("✅");
+      const disabled = isGuessed || gameOverOrWin;
+      const isCorrect = isGuessed && answer.includes(letter);
+
+      const btnClass = isGuessed
+        ? (isCorrect ? "bg-green-600 text-white" : "bg-red-600 text-white")
+        : (gameOverOrWin ? "bg-gray-200 text-gray-500" : "bg-indigo-600 text-white hover:bg-indigo-700");
+
+      return (
+        <button
+          key={letter}
+          onClick={() => handleGuessLetter(letter)}
+          disabled={disabled}
+          className={`px-3 py-2 rounded-md font-semibold shadow-md ${btnClass}`}
+        >
+          {letter}
+        </button>
+      );
+    })}
+  </div>
+</div>
+
+        {message && (
+            <div className="w-full flex justify-center mt-4 mb-6">
+              <p className="inline-block text-lg font-semibold text-indigo-700 bg-white px-4 py-2 rounded-lg shadow-md">
+                {message}
+              </p>
             </div>
+        )}
+          <div className="mt-6 w-full flex gap-2 justify-center">
+                <button
+                  onClick={newGame}
+                  className="px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-md font-semibold"
+                >
+                  New Word
+                </button>
+                <button
+                  onClick={() => {
+                    const types = Object.keys(LANGUAGE_MAP[language] || {});
+                    const randomType = types[Math.floor(Math.random() * types.length)] || "";
+                    const themes = Object.keys(LANGUAGE_MAP[language]?.[randomType] || {});
+                    const randomTheme = themes[Math.floor(Math.random() * themes.length)] || "";
+                    setThemeType(randomType);
+                    setTheme(randomTheme);
+                  }}
+                  className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md font-semibold"
+                >
+                  Random Theme
+                </button>
+              </div>
         </div>
-    );
+      </div>
+
+  );
 }
