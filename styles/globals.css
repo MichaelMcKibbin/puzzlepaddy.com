@@ -2,11 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: sans-serif;
     background-color: #f9fafb;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 

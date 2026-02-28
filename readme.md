@@ -1,4 +1,4 @@
-# 🚀 PuzzlePaddy.com — Next.js SSR Web Application
+# PuzzlePaddy.com — Next.js SSR Web Application
 
 ![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?logo=node.js&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
@@ -6,7 +6,6 @@
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3-38B2AC?logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript&logoColor=black)
 ![CI/CD](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-blue?logo=github-actions&logoColor=white)
-![Deployment](https://img.shields.io/badge/Hostinger-Automated%20Deploy-673DE6?logo=hostinger&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Contributions welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen)
 ![Issues](https://img.shields.io/github/issues/MichaelMcKibbin/puzzlepaddy)
@@ -15,6 +14,8 @@
 ![Repo Size](https://img.shields.io/github/repo-size/MichaelMcKibbin/puzzlepaddy)
 ![Last Commit](https://img.shields.io/github/last-commit/MichaelMcKibbin/puzzlepaddy)
 ![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-10k+-blueviolet)
+<!--![Deployment](https://img.shields.io/badge/Hostinger-Automated%20Deploy-673DE6?logo=hostinger&logoColor=white)-->
+
 
 A full-stack puzzle & games platform built with **Next.js**, **React**, **Node.js**, and **Tailwind CSS**, deployed via automated **GitHub webhook**.
 
@@ -36,13 +37,13 @@ The current version includes a number of fully functional puzzle and game pages.
 
 Live Site: https://puzzlepaddy.com/
 
-## 🧩 Features
-### ✔️ Current Features
+## Features
+### Current Features
 
-- 🎮 Games and puzzles implemented with React components
-- 🎨 Tailwind-based layout and styling
-- 📱 Responsive header/navigation
-- ⚡ Server-side rendering for dynamic functionality
+- Games and puzzles implemented with React components
+- Tailwind-based layout and styling
+- Responsive header/navigation
+- Server-side rendering for dynamic functionality
 - /games page with multiple mini-games
 - /puzzles page for logic puzzles and brain teasers
 - interactive components (word puzzles, number games, etc.)
@@ -52,11 +53,11 @@ Live Site: https://puzzlepaddy.com/
   - When used with a hosting package that gives full support for Node.js server applications, the contact form will work as intended.
   - added button links instead
 
-### 🚧 Planned Features
+### Planned Features
 - Improved site-wide styling and branding
 - SEO and metadata improvements
 
-### 🛠 Tech Stack
+### Tech Stack
 
 | Category   | Technology                     |
 |------------|--------------------------------|
@@ -67,7 +68,7 @@ Live Site: https://puzzlepaddy.com/
 | Deployment | Node.js server on Hostinger    |
 | Pipeline   | GitHub webhook + auto-deploy   |
 
-### 📁 Project Structure
+### Project Structure
 ```
 puzzlepaddy/
 ├── components/      # Reusable UI components
@@ -79,29 +80,29 @@ puzzlepaddy/
 └── next.config.js
 ```
 
-### 🚀 Running the Project Locally
-- 1️⃣ Install dependencies
+### Running the Project Locally
+- 1 Install dependencies
 ```npm install```
 
-- 2️⃣ Start development server
+- 2 Start development server
 ```npm run dev```
 
 - The site will be available at:
 ```http://localhost:3000```
 
-### 🏗 Building for Production
+### Building for Production
 
 PuzzlePaddy is deployed as a Node.js server application.
 
-- 1️⃣ Build the app
+- 1 Build the app
 ```npm run build```
 
-- 2️⃣ Start the server
+- 2 Start the server
 ```npm start```
 
 This runs the Next.js server with API routes and SSR capabilities.
 
-- 3️⃣ Deployment
+- 3 Deployment
 
 Automatic deployment via GitHub webhook to Hostinger's Node.js hosting.
 
@@ -138,7 +139,7 @@ After building, the file structure will look a little like this:
 ƒ  (Dynamic)  server-rendered on demand```
 
 
-### 🔒 Security Notes
+### Security Notes
 
 Do NOT commit:
 - .env files or secrets
@@ -146,7 +147,7 @@ Do NOT commit:
 
 Server includes API routes for contact form and dynamic functionality
 
-### 📌 Roadmap
+### Roadmap
 
 - Upgrade navigation component and mobile menu
 - Add colour palette + consistent brand theme
@@ -157,12 +158,12 @@ Server includes API routes for contact form and dynamic functionality
 - Add more styling
 - Add more accessibility features
 
-### 🤝 Contributing
+### Contributing
 
 This is an ongoing personal project.
 Feel free to fork the repository or submit suggestions.
 
-### 📜 License
+### License
 This repository is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license.
 
 In plain language (summary, not a substitute for the full legal text)
@@ -179,9 +180,9 @@ https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 
 If you would like to use this material in a commercial product, course, or book, please contact the author to discuss licensing terms.
 
-### 💬 Contact
+### Contact
 
-Made by Michael McKibbin www.michaelmckibbin.com
+By: Michael McKibbin www.michaelmckibbin.com
 
 GitHub: https://github.com/MichaelMcKibbin
 

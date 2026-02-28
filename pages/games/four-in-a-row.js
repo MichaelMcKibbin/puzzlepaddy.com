@@ -162,27 +162,27 @@ export default function FourInARowGame() {
     cell === PLAYER ? "bg-red-500" : cell === COMPUTER ? "bg-yellow-400" : "bg-transparent";
 
   return (
-    <main className="min-h-screen flex items-start justify-center py-8 bg-shamrocks bg-cover bg-center bg-no-repeat">
-      <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 sm:p-8 mx-auto">
-        <header className="flex items-center justify-between mb-4">
+    <main className="min-h-screen flex items-start justify-center py-4 sm:py-8 bg-shamrocks bg-cover bg-center bg-no-repeat overflow-x-hidden">
+      <div className="w-full px-4 sm:px-8 max-w-xl bg-white rounded-2xl shadow-lg p-4 sm:p-8 mx-auto">
+        <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
           <div>
             <h1 className="text-2xl font-bold text-slate-800">Four-in-a-row</h1>
-            <p className="text-sm text-slate-500">Get 4 in a row — horizontal, vertical or diagonal.</p>
+            <p className="text-xs sm:text-sm text-slate-500">Get 4 in a row — horizontal, vertical or diagonal.</p>
           </div>
-          <div className="text-right">
-            <div className="text-sm text-slate-500">Status</div>
-            <div className="font-medium text-slate-700">{message}</div>
+          <div className="text-left sm:text-right">
+            <div className="text-xs sm:text-sm text-slate-500">Status</div>
+            <div className="font-medium text-slate-700 text-sm sm:text-base">{message}</div>
           </div>
         </header>
 
-        <div className="mb-4">
-          <div className="grid grid-cols-7 gap-2">
+        <div className="mb-4 overflow-x-auto">
+          <div className="grid grid-cols-7 gap-1 sm:gap-2 min-w-min">
             {Array.from({ length: COLS }).map((_, colIndex) => (
               <button
                 key={`col-${colIndex}`}
                 onClick={() => handleDrop(colIndex)}
                 disabled={gameOver || turnLocked || findAvailableRow(grid, colIndex) === -1}
-                className="h-8 rounded-md bg-sky-600 text-white text-sm font-medium hover:bg-sky-700 disabled:opacity-40"
+                className="px-2 sm:px-3 py-1 sm:py-2 rounded-md bg-sky-600 text-white text-xs sm:text-sm font-medium hover:bg-sky-700 disabled:opacity-40 flex-shrink-0"
                 aria-label={`Drop in column ${colIndex + 1}`}
               >
                 Drop
@@ -191,8 +191,8 @@ export default function FourInARowGame() {
           </div>
         </div>
 
-        <div className="bg-sky-50 p-3 rounded-lg">
-          <div className="grid grid-rows-6 grid-cols-7 gap-2">
+        <div className="bg-sky-50 p-2 sm:p-3 rounded-lg overflow-x-auto">
+          <div className="grid gap-1 sm:gap-2" style={{ gridTemplateColumns: `repeat(7, minmax(0, 1fr))`, gridTemplateRows: `repeat(6, 1fr)` }}>
             {grid.map((row, rIdx) =>
               row.map((cell, cIdx) => {
                 const key = `${rIdx}-${cIdx}`;
@@ -200,16 +200,16 @@ export default function FourInARowGame() {
                 return (
                   <div
                     key={key}
-                    className="w-14 h-14 flex items-center justify-center bg-slate-100 rounded-full border border-slate-200"
+                    className="aspect-square flex items-center justify-center bg-slate-100 rounded-full border border-slate-200"
                   >
                     <div
-                      className={`w-10 h-10 rounded-full border ${cell ? "border-transparent" : "border-slate-200"} ${cellColor(
+                      className={`w-5/6 h-5/6 rounded-full border ${cell ? "border-transparent" : "border-slate-200"} ${cellColor(
                         cell
                       )} ${isWinning ? "animate-pulse ring-4 ring-emerald-300 scale-105" : ""} flex items-center justify-center`}
                       aria-hidden="true"
                     >
                       {cell ? (
-                        <img src="/images/shamrock_1.svg" alt="" aria-hidden="true" className="w-7 h-7 drop-shadow-sm" />
+                        <img src="/images/shamrock_1.svg" alt="" aria-hidden="true" className="w-3/5 h-3/5 drop-shadow-sm" />
                       ) : null}
                     </div>
                   </div>
@@ -219,8 +219,8 @@ export default function FourInARowGame() {
           </div>
         </div>
 
-        <div className="mt-4 flex gap-3">
-          <button onClick={handleRestart} className="px-4 py-2 rounded-xl bg-sky-600 text-white font-medium hover:bg-sky-700">
+        <div className="mt-4 flex gap-2 sm:gap-3 flex-wrap">
+          <button onClick={handleRestart} className="px-4 py-2 rounded-xl bg-sky-600 text-white text-sm font-medium hover:bg-sky-700">
             Restart
           </button>
           <button
@@ -238,7 +238,7 @@ export default function FourInARowGame() {
                 }
               }, 200);
             }}
-            className="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50"
+            className="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 text-sm hover:bg-slate-50"
           >
             Let computer start
           </button>
