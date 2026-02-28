@@ -1,19 +1,48 @@
 import Link from "next/link";
+import { useState } from "react";
 
 // Combined list of all games/puzzles
+// Add image filename for each game (images should be placed in /public/images/games/)
 const allGames = [
-    { slug: 'tictactoe', name: 'Tic Tac Toe', path: '/games/tictactoe', category: 'Strategy' },
-    { slug: 'four-in-a-row', name: 'Four in a Row', path: '/games/four-in-a-row', category: 'Strategy' },
-    { slug: 'hangman', name: 'Hangman', path: '/games/hangman', category: 'Word' },
-    { slug: 'word-scramble', name: 'Word Scramble', path: '/puzzles/word-scramble', category: 'Word' },
-    { slug: 'mastermind', name: 'Mastermind', path: '/puzzles/mastermind', category: 'Logic' },
-    { slug: 'mini-sudoku', name: 'Mini Sudoku', path: '/puzzles/mini-sudoku', category: 'Logic' },
-    { slug: 'nonogram', name: 'Nonogram', path: '/games/nonogram', category: 'Logic' },
-    { slug: 'sliding-tile', name: 'Sliding Tile', path: '/puzzles/sliding-tile', category: 'Puzzle' },
-    { slug: 'snake', name: 'Snake', path: '/games/snake', category: 'Arcade' },
-    { slug: 'number-guess', name: 'Number Guessing', path: '/games/number-guess', category: 'Puzzle' },
-    { slug: 'dog-rescue', name: 'Dog Rescue', path: '/games/dog-rescue', category: 'Puzzle' },
+    { slug: 'tictactoe', name: 'Tic Tac Toe', path: '/games/tictactoe', category: 'Strategy', image: 'tictactoe.jpg', emoji: '⭕' },
+    { slug: 'four-in-a-row', name: 'Four in a Row', path: '/games/four-in-a-row', category: 'Strategy', image: 'four-in-a-row.jpg', emoji: '🔴' },
+    { slug: 'hangman', name: 'Hangman', path: '/games/hangman', category: 'Word', image: 'hangman.jpg', emoji: '🔤' },
+    { slug: 'word-scramble', name: 'Word Scramble', path: '/puzzles/word-scramble', category: 'Word', image: 'word-scramble.jpg', emoji: '🔀' },
+    { slug: 'mastermind', name: 'Mastermind', path: '/puzzles/mastermind', category: 'Logic', image: 'mastermind.jpg', emoji: '🎯' },
+    { slug: 'mini-sudoku', name: 'Mini Sudoku', path: '/puzzles/mini-sudoku', category: 'Logic', image: 'mini-sudoku.jpg', emoji: '🔢' },
+    { slug: 'nonogram', name: 'Nonogram', path: '/games/nonogram', category: 'Logic', image: 'nonogram.jpg', emoji: '📊' },
+    { slug: 'sliding-tile', name: 'Sliding Tile', path: '/puzzles/sliding-tile', category: 'Puzzle', image: 'sliding-tile.jpg', emoji: '🧩' },
+    { slug: 'snake', name: 'Snake', path: '/games/snake', category: 'Arcade', image: 'snake.jpg', emoji: '🐍' },
+    { slug: 'number-guess', name: 'Number Guessing', path: '/games/number-guess', category: 'Puzzle', image: 'number-guess.jpg', emoji: '🔮' },
+    { slug: 'dog-rescue', name: 'Dog Rescue', path: '/games/dog-rescue', category: 'Puzzle', image: 'dog-rescue.jpg', emoji: '🐕' },
 ];
+
+function GameThumbnail({ game }) {
+    const [imageError, setImageError] = useState(false);
+    const imagePath = `/images/games/${game.image}`;
+
+    return (
+        <div className="aspect-square bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-colors overflow-hidden relative">
+            {!imageError ? (
+                <>
+                    <img
+                        src={imagePath}
+                        alt={game.name}
+                        className="w-full h-full object-cover"
+                        onError={() => setImageError(true)}
+                    />
+                    {/* Overlay for better text readability if needed */}
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                </>
+            ) : (
+                // Fallback to emoji if image not found
+                <div className="text-4xl sm:text-5xl opacity-50 group-hover:opacity-70 transition-opacity">
+                    {game.emoji}
+                </div>
+            )}
+        </div>
+    );
+}
 
 export default function Home() {
     return (
@@ -34,12 +63,7 @@ export default function Home() {
                                 href={game.path}
                                 className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-gray-200 hover:border-indigo-400 flex flex-col"
                             >
-                                {/* Thumbnail placeholder - can be replaced with actual images later */}
-                                <div className="aspect-square bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-colors">
-                                    <div className="text-4xl sm:text-5xl opacity-50 group-hover:opacity-70 transition-opacity">
-                                        🎮
-                                    </div>
-                                </div>
+                                <GameThumbnail game={game} />
 
                                 {/* Game info */}
                                 <div className="p-3 sm:p-4 flex-grow flex flex-col">
