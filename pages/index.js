@@ -6,6 +6,7 @@ import { useState } from "react";
 const allGames = [
     { slug: 'tictactoe', name: 'Tic Tac Toe', path: '/games/tictactoe', category: 'Strategy', image: 'tictactoe.jpg', emoji: '⭕' },
     { slug: 'four-in-a-row', name: 'Four in a Row', path: '/games/four-in-a-row', category: 'Strategy', image: 'four-in-a-row.jpg', emoji: '🔴' },
+    { slug: '2048', name: '2048', path: '/games/2048', category: 'Puzzle', image: '2048.jpg', emoji: '🔢' },
     { slug: 'hangman', name: 'Hangman', path: '/games/hangman', category: 'Word', image: 'hangman.jpg', emoji: '🔤' },
     { slug: 'word-scramble', name: 'Word Scramble', path: '/puzzles/word-scramble', category: 'Word', image: 'word-scramble.jpg', emoji: '🔀' },
     { slug: 'mastermind', name: 'Mastermind', path: '/puzzles/mastermind', category: 'Logic', image: 'mastermind.jpg', emoji: '🎯' },

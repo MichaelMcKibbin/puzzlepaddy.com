@@ -3,12 +3,13 @@ import Link from "next/link";
 
 const games = [
     { slug: 'tictactoe', name: 'Tic Tac Toe' },
+    { slug: 'four-in-a-row', name: 'Four in a Row' },
+    { slug: '2048', name: '2048' },
     { slug: 'nonogram', name: 'Nonogram' },
     { slug: 'snake', name: 'Snake' },
     { slug: 'hangman', name: 'Hangman' },
     { slug: 'number-guess', name: 'Number Guessing' },
     { slug: 'dog-rescue', name: 'Dog Rescue'},
-    { slug: 'four-in-a-row', name: 'Four in a Row' },
 ];
 
 export default function Games() {

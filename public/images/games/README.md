@@ -14,6 +14,7 @@ Place images in this folder with the following filenames:
 
 - `tictactoe.jpg` - Tic Tac Toe
 - `four-in-a-row.jpg` - Four in a Row
+- `2048.jpg` - 2048
 - `hangman.jpg` - Hangman
 - `word-scramble.jpg` - Word Scramble
 - `mastermind.jpg` - Mastermind
@@ -29,6 +30,7 @@ Place images in this folder with the following filenames:
 If an image is not found or fails to load, the tile will automatically display an emoji placeholder instead:
 - ⭕ Tic Tac Toe
 - 🔴 Four in a Row
+- 🔢 2048
 - 🔤 Hangman
 - 🔀 Word Scramble
 - 🎯 Mastermind
