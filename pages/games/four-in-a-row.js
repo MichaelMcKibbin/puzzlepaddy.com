@@ -192,7 +192,7 @@ export default function FourInARowGame() {
         </div>
 
         <div className="bg-sky-50 p-2 sm:p-3 rounded-lg overflow-x-auto">
-          <div className="grid gap-1 sm:gap-2" style={{ gridTemplateColumns: `repeat(7, minmax(0, 1fr))`, gridTemplateRows: `repeat(6, 1fr)` }}>
+          <div className="grid gap-1 sm:gap-2" style={{ gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gridTemplateRows: 'repeat(6, 1fr)' }}>
             {grid.map((row, rIdx) =>
               row.map((cell, cIdx) => {
                 const key = `${rIdx}-${cIdx}`;
