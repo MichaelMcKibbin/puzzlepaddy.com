@@ -11,7 +11,7 @@ const LANGUAGE_MAP = {
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const WRONG_EMOJI_STAGES = [
-      "", // 0 wrong
+      "😁", // 0 wrong
       "😟", // 1 wrong
       "😰", // 2 wrong
       "😨", // 3 wrong
@@ -49,6 +49,7 @@ export default function HangmanPage() {
   const [theme, setTheme] = useState(themeKeys[0] || "");
 
   const [answer, setAnswer] = useState("");
+  const [previousAnswer, setPreviousAnswer] = useState("");
   const [guessed, setGuessed] = useState(() => new Set());
   const [wrongCount, setWrongCount] = useState(0);
   const maxWrong = 6;
@@ -65,11 +66,24 @@ export default function HangmanPage() {
   function pickRandomWord() {
     const words = getCurrentWords();
     if (!words || words.length === 0) return "";
-    return words[Math.floor(Math.random() * words.length)];
+
+    // If there's only one word, we have to use it
+    if (words.length === 1) return words[0];
+
+    // Try to pick a different word from the previous one
+    let attempts = 0;
+    let newWord;
+    do {
+      newWord = words[Math.floor(Math.random() * words.length)];
+      attempts++;
+    } while (newWord === previousAnswer && attempts < 50);
+
+    return newWord;
   }
 
   function newGame() {
     const w = pickRandomWord();
+    setPreviousAnswer(answer); // Save current answer before changing
     setAnswer(w);
     setGuessed(new Set());
     setWrongCount(0);
@@ -136,52 +150,43 @@ export default function HangmanPage() {
         <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800">Hangman</h1>
 
         <div className="flex flex-col items-center justify-center">
-          <label className="mb-4 w-full max-w-md flex items-center gap-2">
-            <span className="font-semibold text-indigo-700">Language:</span>
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
-            >
-              {languageKeys.map((lang) => (
-                <option key={lang} value={lang}>
-                  {lang}
-                </option>
-              ))}
-            </select>
-          </label>
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="mb-4 w-full max-w-md px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md text-center font-semibold text-indigo-700"
+          >
+            {languageKeys.map((lang) => (
+              <option key={lang} value={lang}>
+                {lang}
+              </option>
+            ))}
+          </select>
 
-          <label className="mb-4 w-full max-w-md flex items-center gap-2">
-            <span className="font-semibold text-indigo-700">Type:</span>
-            <select
-              value={themeType}
-              onChange={(e) => setThemeType(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
-            >
-              {typeKeys.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </label>
+          <select
+            value={themeType}
+            onChange={(e) => setThemeType(e.target.value)}
+            className="mb-4 w-full max-w-md px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md text-center font-semibold text-indigo-700"
+          >
+            {typeKeys.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
 
-          <label className="mb-6 w-full max-w-md flex items-center gap-2">
-            <span className="font-semibold text-indigo-700">Theme:</span>
-            <select
-              value={theme}
-              onChange={(e) => setTheme(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
-            >
-              {themeKeys.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </label>
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            className="mb-6 w-full max-w-md px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md text-center font-semibold text-indigo-700"
+          >
+            {themeKeys.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
 
-          <div className="mb-6 text-xl font-bold text-indigo-700 bg-white px-6 py-3 rounded-lg shadow-md">
+          <div className="mb-6 w-full max-w-md text-xl font-bold text-indigo-700 bg-white px-6 py-3 rounded-lg shadow-md text-center">
             Guess the word letter by letter!
           </div>
 
@@ -202,7 +207,7 @@ export default function HangmanPage() {
           className={i < wrongCount ? "text-red-500 text-xl" : "text-green-500 text-xl"}
           aria-hidden
         >
-          {i < wrongCount ? "❌" : "❔"}
+          {i < wrongCount ? "❌" : "❤️"}
         </span>
       ))}
     </div>
