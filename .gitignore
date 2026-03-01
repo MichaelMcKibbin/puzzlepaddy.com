@@ -76,3 +76,7 @@ Desktop.ini
 *~
 .cache/
 coverage/
+
+# Documentation
+docs/
+
