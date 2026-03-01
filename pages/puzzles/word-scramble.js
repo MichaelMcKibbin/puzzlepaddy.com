@@ -100,52 +100,43 @@
           <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800">Word Scramble</h1>
 
           <div className="flex flex-col items-center justify-center">
-            <label className="mb-4 w-full max-w-md flex items-center gap-2">
-              <span className="font-semibold text-indigo-700">Language:</span>
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
-              >
-                {languageKeys.map((lang) => (
-                  <option key={lang} value={lang}>
-                    {lang}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="mb-4 w-full max-w-md px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md text-center font-semibold text-indigo-700"
+            >
+              {languageKeys.map((lang) => (
+                <option key={lang} value={lang}>
+                  {lang}
+                </option>
+              ))}
+            </select>
 
-            <label className="mb-4 w-full max-w-md flex items-center gap-2">
-              <span className="font-semibold text-indigo-700">Type:</span>
-              <select
-                value={themeType}
-                onChange={(e) => setThemeType(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
-              >
-                {typeKeys.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <select
+              value={themeType}
+              onChange={(e) => setThemeType(e.target.value)}
+              className="mb-4 w-full max-w-md px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md text-center font-semibold text-indigo-700"
+            >
+              {typeKeys.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
 
-            <label className="mb-4 w-full max-w-md flex items-center gap-2">
-              <span className="font-semibold text-indigo-700">Theme:</span>
-              <select
-                value={theme}
-                onChange={(e) => setTheme(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md"
-              >
-                {themeKeys.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <select
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+              className="mb-6 w-full max-w-md px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md text-center font-semibold text-indigo-700"
+            >
+              {themeKeys.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
 
-            <div className="mb-6 text-xl font-bold text-indigo-700 bg-white px-6 py-3 rounded-lg shadow-md">
+            <div className="mb-6 w-full max-w-md text-xl font-bold text-indigo-700 bg-white px-6 py-3 rounded-lg shadow-md text-center">
               Unscramble the word:
             </div>
 
@@ -169,12 +160,14 @@
             </form>
 
             {message && (
-              <p className="mb-6 text-lg font-semibold text-indigo-700 bg-white px-6 py-3 rounded-lg shadow-md">
-                {message}
-              </p>
+              <div className="w-full flex justify-center mb-6">
+                <p className="inline-block text-lg font-semibold text-indigo-700 bg-white px-4 py-2 rounded-lg shadow-md">
+                  {message}
+                </p>
+              </div>
             )}
 
-            <div className="flex gap-2">
+            <div className="w-full flex gap-2 justify-center">
               <button
                 onClick={newPuzzle}
                 className="px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-md font-semibold"
