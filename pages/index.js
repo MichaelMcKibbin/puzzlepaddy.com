@@ -11,6 +11,7 @@ const allGames = [
     { slug: 'word-scramble', name: 'Word Scramble', path: '/puzzles/word-scramble', category: 'Word', image: 'word-scramble.jpg', emoji: '🔀' },
 //    { slug: 'word-ladder', name: 'Word Ladder', path: '/games/word-ladder', category: 'Word', image: 'word-ladder.jpg', emoji: '🪜' },
     { slug: 'lights-out', name: 'Lights Out', path: '/games/lights-out', category: 'Logic', image: 'lights-out.jpg', emoji: '💡' },
+    { slug: 'sokoban', name: 'Sokoban', path: '/games/sokoban', category: 'Puzzle', image: 'sokoban.jpg', emoji: '📦' },
     { slug: 'mastermind', name: 'Mastermind', path: '/puzzles/mastermind', category: 'Logic', image: 'mastermind.jpg', emoji: '🎯' },
     { slug: 'mini-sudoku', name: 'Mini Sudoku', path: '/puzzles/mini-sudoku', category: 'Logic', image: 'mini-sudoku.jpg', emoji: '🔢' },
 //    { slug: 'nonogram', name: 'Nonogram', path: '/games/nonogram', category: 'Logic', image: 'nonogram.jpg', emoji: '📊' },
