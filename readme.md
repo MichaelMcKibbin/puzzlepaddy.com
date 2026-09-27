@@ -14,7 +14,6 @@
 ![Repo Size](https://img.shields.io/github/repo-size/MichaelMcKibbin/puzzlepaddy)
 ![Last Commit](https://img.shields.io/github/last-commit/MichaelMcKibbin/puzzlepaddy)
 ![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-10k+-blueviolet)
-<!--![Deployment](https://img.shields.io/badge/Hostinger-Automated%20Deploy-673DE6?logo=hostinger&logoColor=white)-->
 
 
 A full-stack puzzle & games platform built with **Next.js**, **React**, **Node.js**, and **Tailwind CSS**, deployed via automated **GitHub webhook**.
@@ -31,7 +30,7 @@ Built with
 - SSR (server-side rendering)
 - Dynamic functionality
 - GitHub Actions CI/CD
-- Hostinger automated server deployment
+- Automated server deployment
 
 The current version includes a number of fully functional puzzle and game pages.
 
@@ -59,14 +58,14 @@ Live Site: https://puzzlepaddy.com/
 
 ### Tech Stack
 
-| Category   | Technology                     |
-|------------|--------------------------------|
-| Framework  | Next.js                        |
-| Language   | JavaScript                     |
-| Frontend   | React + Tailwind CSS           |
-| Tooling    | npm, PostCSS                   |
-| Deployment | Node.js server on Hostinger    |
-| Pipeline   | GitHub webhook + auto-deploy   |
+| Category   | Technology                   |
+|------------|------------------------------|
+| Framework  | Next.js                      |
+| Language   | JavaScript                   |
+| Frontend   | React + Tailwind CSS         |
+| Tooling    | npm, PostCSS                 |
+| Deployment | Node.js server               |
+| Pipeline   | GitHub webhook + auto-deploy |
 
 ### Project Structure
 ```
@@ -104,7 +103,7 @@ This runs the Next.js server with API routes and SSR capabilities.
 
 - 3 Deployment
 
-Automatic deployment via GitHub webhook to Hostinger's Node.js hosting.
+Automatic deployment via webhook to Node.js hosting.
 
 ### Static vs Dynamic Pages
 After running ```npm run build```, the Next.js server will generate static HTML pages for each page in the ```/pages``` directory.  
@@ -178,7 +177,7 @@ In plain language (summary, not a substitute for the full legal text)
 For the full legal code of this license, see the official Creative Commons page:
 https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 
-If you would like to use this material in a commercial product, course, or book, please contact the author to discuss licensing terms.
+If you would like to use this material in a commercial product, course, or book, please contact the author to discuss licensing.
 
 ### Contact
 
