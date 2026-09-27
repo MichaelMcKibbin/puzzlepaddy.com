@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start -p $PORT",
     "dev": "next dev"
   },
