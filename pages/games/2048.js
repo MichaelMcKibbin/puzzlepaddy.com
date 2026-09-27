@@ -1,7 +1,10 @@
 // pages/games/2048.js
 import { useState, useEffect, useCallback } from "react";
 
-// Constants
+/**
+ * 2048 game page.
+ * Implements the classic sliding-grid merge mechanics with keyboard controls and score tracking.
+ */
 const GRID_SIZE = 4;
 
 // Tile colors based on value

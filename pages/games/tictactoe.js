@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * Tic-Tac-Toe page.
+ * Supports local multiplayer and a light computer opponent with adjustable difficulty.
+ */
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],

@@ -1,6 +1,10 @@
 // /pages/games/mini-sudoku.js
 import { useState, useEffect } from "react";
 
+/**
+ * Mini Sudoku page.
+ * Allows the player to switch between 4x4 and 6x6 grids and validates the board as they play.
+ */
 export default function MiniSudokuPage() {
     const [size, setSize] = useState(4);
     const [startGrid, setStartGrid] = useState(() => generatePuzzle(size));

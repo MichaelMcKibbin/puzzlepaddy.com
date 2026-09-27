@@ -2,6 +2,10 @@
 // pages/games/four-in-a-row.js
 import { useState } from "react";
 
+/**
+ * Four-in-a-row game board.
+ * Players drop discs into columns and the AI tries to win while blocking the player.
+ */
 const ROWS = 6;
 const COLS = 7;
 const PLAYER = "P";

@@ -1,6 +1,10 @@
 // /pages/games/number-guess.js
 import { useState } from "react";
 
+/**
+ * Number guessing game.
+ * Players can either guess the CPU's hidden number or have the CPU guess theirs using feedback loops.
+ */
 export default function NumberGuessPage() {
     const [gameMode, setGameMode] = useState("cpu-guesses"); // "cpu-guesses" or "player-guesses"
     const [gameState, setGameState] = useState("setup"); // "setup", "playing", "won"

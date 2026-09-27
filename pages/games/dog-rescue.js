@@ -2,6 +2,10 @@
 // pages/games/dog-rescue.js
 import { useState } from "react";
 
+/**
+ * Dog Rescue mini-game.
+ * Each round presents a dog with an emotion and the player must choose the correct care action.
+ */
 const ACTIONS = [
     { id: "food", label: "Give food", icon: "🦴" },
     { id: "water", label: "Give water", icon: "💧" },

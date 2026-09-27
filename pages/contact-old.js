@@ -2,18 +2,28 @@
 import { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
+/**
+ * Legacy contact form.
+ * Keeps the older reCAPTCHA-based messaging flow available for reference.
+ */
 export default function Contact() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [status, setStatus] = useState("");
     const recaptchaRef = useRef();
 
+    /**
+     * Update the form field values as the user types.
+     */
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
+    /**
+     * Submit the contact form after validation and reCAPTCHA checks.
+     */
     async function handleSubmit(e) {
         e.preventDefault();
-        
+
         const recaptchaValue = recaptchaRef.current.getValue();
         if (!recaptchaValue) {
             setStatus("❌ Please complete the reCAPTCHA.");
@@ -45,7 +55,7 @@ export default function Contact() {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
             <div className="max-w-2xl mx-auto px-4">
                 <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800">Contact Us</h1>
-                
+
                 <div className="bg-white rounded-xl shadow-lg p-8">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>

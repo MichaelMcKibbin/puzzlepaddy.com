@@ -13,6 +13,10 @@ import {
 
 const DIFFICULTY_SETTINGS = getDifficultySettings();
 
+/**
+ * Word Ladder page.
+ * Generates target words, validates allowed moves, and tracks hints and scoring as the ladder grows.
+ */
 export default function WordLadderPage() {
   // Game state
   const [difficulty, setDifficulty] = useState("Easy");

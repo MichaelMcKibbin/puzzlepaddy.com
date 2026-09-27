@@ -1,7 +1,10 @@
 // /pages/games/nonogram.js
 import { useState, useEffect } from "react";
 
-// Collection of 5x5 puzzles
+/**
+ * Nonogram page.
+ * Provides a small set of 5x5 pixel-style picture puzzles that validate a completed board.
+ */
 const PUZZLES = [
     {
         solution: [

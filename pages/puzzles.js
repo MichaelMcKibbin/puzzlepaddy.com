@@ -1,6 +1,10 @@
 // /pages/puzzles.js
 import Link from "next/link";
 
+/**
+ * Puzzle index list.
+ * Contains the collection of logic and word-based mini-games available under /puzzles.
+ */
 const puzzles = [
     { slug: 'mastermind', name: 'Mastermind' },
     { slug: 'mini-sudoku', name: 'Mini Sudoku' },
@@ -8,6 +12,10 @@ const puzzles = [
     { slug: 'word-scramble', name: 'Word Scramble' }
 ];
 
+/**
+ * Puzzle landing page.
+ * Renders a simple list of each puzzle type with links to the individual experiences.
+ */
 export default function Puzzles() {
     return (
         <div>

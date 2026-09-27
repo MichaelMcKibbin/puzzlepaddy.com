@@ -1,6 +1,10 @@
 // /pages/games/mastermind.js
 import { useEffect, useState } from "react";
 
+/**
+ * Mastermind puzzle page.
+ * Generates a hidden colour code and evaluates guesses using exact and near matches.
+ */
 const COLORS = ["red", "blue", "green", "yellow", "purple", "orange"];
 const CODE_LENGTH = 4;
 const MAX_TURNS = 10;

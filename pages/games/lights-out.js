@@ -9,6 +9,10 @@ import {
   createSeededRNG,
 } from "../../lib/lightsOutUtils";
 
+/**
+ * Lights Out puzzle page.
+ * Lets the player choose a board size and mode, then toggle cells to clear the board.
+ */
 export default function LightsOutPage() {
   // Game configuration
   const [boardSize, setBoardSize] = useState(5);

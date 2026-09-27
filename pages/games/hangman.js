@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import ENGLISH from "../../data/theme-lists-english.json";
 import US_ENGLISH from "../../data/theme-lists-us-english.json";
 
+/**
+ * Hangman game page.
+ * Lets players pick a language, category, and theme before guessing a hidden word.
+ */
 const LANGUAGE_MAP = {
   English: ENGLISH,
   "US English": US_ENGLISH,

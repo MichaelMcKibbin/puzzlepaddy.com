@@ -1,6 +1,10 @@
 // /pages/api/contact.js
 import nodemailer from "nodemailer";
 
+/**
+ * Contact form API endpoint.
+ * Verifies reCAPTCHA and sends a formatted email message when the request is valid.
+ */
 export default async function handler(req, res) {
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed" });

@@ -1,6 +1,10 @@
 // /pages/games.js
 import Link from "next/link";
 
+/**
+ * Game index list.
+ * Keeps the main game directory easy to expand as more interactive experiences are added.
+ */
 const games = [
     { slug: 'tictactoe', name: 'Tic Tac Toe' },
     { slug: 'four-in-a-row', name: 'Four in a Row' },
@@ -11,9 +15,13 @@ const games = [
     { slug: 'nonogram', name: 'Nonogram' },
     { slug: 'snake', name: 'Snake' },
     { slug: 'number-guess', name: 'Number Guessing' },
-    { slug: 'dog-rescue', name: 'Dog Rescue'},
+    { slug: 'dog-rescue', name: 'Dog Rescue' },
 ];
 
+/**
+ * Games landing page.
+ * Displays a simple catalog of game entries that routes to each page from a shared page list.
+ */
 export default function Games() {
     return (
         <div>

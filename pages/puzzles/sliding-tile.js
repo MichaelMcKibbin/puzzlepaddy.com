@@ -1,6 +1,10 @@
 // /pages/games/sliding-tile.js
 import { useEffect, useState } from "react";
 
+/**
+ * Sliding Tile puzzle page.
+ * Randomises a solved board by valid legal moves to keep the puzzle solvable and engaging.
+ */
 function createSolvedBoard(size) {
     // 0 is the empty tile
     return Array.from({ length: size * size }, (_, i) => (i + 1) % (size * size));

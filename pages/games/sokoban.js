@@ -11,6 +11,10 @@ import {
 
 const MAX_UNDO_STEPS = 50;
 
+/**
+ * Sokoban puzzle page.
+ * Loads level data, tracks moves and pushes, and supports keyboard and on-screen controls.
+ */
 export default function SokobanPage() {
   // Level selection
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);

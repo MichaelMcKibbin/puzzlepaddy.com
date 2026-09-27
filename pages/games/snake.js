@@ -1,6 +1,10 @@
 // /pages/games/snake.js
 import { useEffect, useState, useCallback } from "react";
 
+/**
+ * Classic Snake game page.
+ * Moves the snake around a fixed grid and grows whenever it reaches food without hitting walls or itself.
+ */
 const GRID_SIZE = 20;
 const INITIAL_SNAKE = [{ x: 10, y: 10 }];
 const INITIAL_DIRECTION = { x: 1, y: 0 };

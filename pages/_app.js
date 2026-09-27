@@ -4,11 +4,19 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+/**
+ * Shared navigation items rendered across the site.
+ * Keeps the header lightweight while making the main landing and contact links easy to maintain.
+ */
 const navItems = [
     { href: "/", label: "Home" },
     { href: "/contact", label: "Contact" },
 ];
 
+/**
+ * Site header.
+ * Renders the primary layout chrome and highlights the active navigation item using the router path.
+ */
 function Header() {
     const router = useRouter();
 
@@ -20,9 +28,9 @@ function Header() {
             <nav className="container mx-auto flex items-center justify-between p-4">
                 {/* Logo / site name */}
                 <Link href="/">
-          <span className="text-2xl font-bold text-indigo-600">
-            Puzzle Paddy
-          </span>
+                    <span className="text-2xl font-bold text-indigo-600">
+                        Puzzle Paddy
+                    </span>
                 </Link>
 
                 {/* Horizontal nav – no bullets, no padding */}
@@ -47,7 +55,10 @@ function Header() {
     );
 }
 
-
+/**
+ * Application wrapper.
+ * Applies the global stylesheet and header, while ensuring cache-control meta tags remain on every page.
+ */
 export default function App({ Component, pageProps }) {
     return (
         <>

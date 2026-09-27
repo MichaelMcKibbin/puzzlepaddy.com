@@ -3,6 +3,10 @@
   import ENGLISH from "../../data/theme-lists-english.json";
   import US_ENGLISH from "../../data/theme-lists-us-english.json";
 
+  /**
+   * Word scramble puzzle page.
+   * Chooses a word from the selected theme and challenges the player to unscramble it.
+   */
   const LANGUAGE_MAP = {
     English: ENGLISH,
     "US English": US_ENGLISH
