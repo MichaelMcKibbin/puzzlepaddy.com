@@ -1,33 +1,27 @@
-# PuzzlePaddy.com — Next.js SSR Web Application
+# PuzzlePaddy.com
 
-![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?logo=node.js&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3-38B2AC?logo=tailwind-css&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![CI/CD](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-blue?logo=github-actions&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Active-success)
-![Contributions welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen)
-![Issues](https://img.shields.io/github/issues/MichaelMcKibbin/puzzlepaddy)
 ![Pull Requests](https://img.shields.io/github/issues-pr/MichaelMcKibbin/puzzlepaddy)
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-![Repo Size](https://img.shields.io/github/repo-size/MichaelMcKibbin/puzzlepaddy)
 ![Last Commit](https://img.shields.io/github/last-commit/MichaelMcKibbin/puzzlepaddy)
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-10k+-blueviolet)
 
 
 A full-stack puzzle & games platform built with **Next.js**, **React**, **Node.js**, and **Tailwind CSS**, deployed via automated **GitHub webhook**.
 
-PuzzlePaddy is a server-side rendered Next.js application featuring interactive games and puzzles with dynamic functionality.  
+PuzzlePaddy is a Next.js application featuring interactive games and puzzles with dynamic functionality.  
 
 Built with
-- Next.js (SSR)
+- Next.js 
 - React
 - JavaScript
 - Tailwind CSS
 - Node.js server
 - API routes
-- SSR (server-side rendering)
 - Dynamic functionality
 - GitHub Actions CI/CD
 - Automated server deployment
@@ -42,7 +36,6 @@ Live Site: https://puzzlepaddy.com/
 - Games and puzzles implemented with React components
 - Tailwind-based layout and styling
 - Responsive header/navigation
-- Server-side rendering for dynamic functionality
 - /games page with multiple mini-games
 - /puzzles page for logic puzzles and brain teasers
 - interactive components (word puzzles, number games, etc.)
@@ -107,10 +100,12 @@ Automatic deployment via webhook to Node.js hosting.
 
 ### Static vs Dynamic Pages
 After running ```npm run build```, the Next.js server will generate static HTML pages for each page in the ```/pages``` directory.  
-The contact page is an example of a dynamic page, and requires an SSR deployment.  
+
+[//]: # (The contact page is an example of a dynamic page, and requires an SSR deployment.  )
 After building, the file structure will look a little like this:
 
-```Route (pages)                                Size  First Load JS    
+```
+Route (pages)                                Size  First Load JS    
 ┌ ○ /                                       877 B        99.3 kB
 ├   /_app                                     0 B        98.5 kB
 ├ ○ /404                                  1.27 kB        99.7 kB
@@ -136,7 +131,7 @@ After building, the file structure will look a little like this:
 
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand```
-
+```
 
 ### Security Notes
 
