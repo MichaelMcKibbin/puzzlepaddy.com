@@ -1,171 +1,104 @@
 # PuzzlePaddy.com
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![CI/CD](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-blue?logo=github-actions&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Pull Requests](https://img.shields.io/github/issues-pr/MichaelMcKibbin/puzzlepaddy)
-![Last Commit](https://img.shields.io/github/last-commit/MichaelMcKibbin/puzzlepaddy)
 
+PuzzlePaddy is a browser-based collection of interactive games and puzzles, built with the Next.js Pages Router, React, and Tailwind CSS.
 
-A full-stack puzzle & games platform built with **Next.js**, **React**, **Node.js**, and **Tailwind CSS**, deployed via automated **GitHub webhook**.
-
-PuzzlePaddy is a Next.js application featuring interactive games and puzzles with dynamic functionality.  
-
-Built with
-- Next.js 
-- React
-- JavaScript
-- Tailwind CSS
-- Node.js server
-- API routes
-- Dynamic functionality
-- GitHub Actions CI/CD
-- Automated server deployment
-
-The current version includes a number of fully functional puzzle and game pages.
-
-Live Site: https://puzzlepaddy.com/
+Live site: <https://puzzlepaddy.com/>
 
 ## Features
-### Current Features
 
-- Games and puzzles implemented with React components
-- Tailwind-based layout and styling
-- Responsive header/navigation
-- /games page with multiple mini-games
-- /puzzles page for logic puzzles and brain teasers
-- interactive components (word puzzles, number games, etc.)
-- /contact page with recaptcha, for user feedback
-  - disabled due to limitations of the hosting package
-  - The original contact form used an API route to send form submissions via email and works in localhost.
-  - When used with a hosting package that gives full support for Node.js server applications, the contact form will work as intended.
-  - added button links instead
+- Responsive home page with links to 13 featured games and puzzles.
+- `/games` directory with 10 game links and `/puzzles` directory with four puzzle links.
+- Eleven game pages: 2048, Dog Rescue, Four in a Row, Hangman, Lights Out, Nonogram, Number Guessing, Snake, Sokoban, Tic Tac Toe, and Word Ladder.
+- Four puzzle pages: Mastermind, Mini Sudoku, Sliding Tile, and Word Scramble.
+- Browser-based game state; some games also save progress or best scores in local storage.
+- A contact page with links to the site owner's website and LinkedIn.
 
-### Planned Features
-- Improved site-wide styling and branding
-- SEO and metadata improvements
+Sokoban has its own game page and is featured on the home page, but is not currently listed on `/games`. Word Ladder and Nonogram have game pages linked from `/games`, but are not currently featured on the home page.
 
-### Tech Stack
+The current `/contact` page does not contain a form. The older form remains at `/contact-old`; it posts to `/api/contact`, which verifies reCAPTCHA and sends email through Nodemailer when configured with the required environment variables.
 
-| Category   | Technology                   |
-|------------|------------------------------|
-| Framework  | Next.js                      |
-| Language   | JavaScript                   |
-| Frontend   | React + Tailwind CSS         |
-| Tooling    | npm, PostCSS                 |
-| Deployment | Node.js server               |
-| Pipeline   | GitHub webhook + auto-deploy |
+## Technology
 
-### Project Structure
-```
+| Area | Technology |
+| --- | --- |
+| Framework | Next.js 16 (Pages Router) |
+| UI | React 19 |
+| Styling | Tailwind CSS 4, PostCSS |
+| Language | JavaScript |
+| Email integration | Nodemailer |
+| CI workflow | GitHub Actions with Node.js 20 |
+
+## Project structure
+
+```text
 puzzlepaddy/
-├── components/      # Reusable UI components
-├── pages/           # Routing (Next.js pages)
-├── styles/          # Global + Tailwind styles
-├── public/          # Static assets
-├── package.json     # Dependencies and scripts
-├── tailwind.config.js
-└── next.config.js
+├── data/                # Word lists, themes, and Sokoban levels
+├── lib/                 # Game utilities and utility tests
+├── pages/               # Page routes and the contact API route
+├── public/              # Images and other static assets
+├── styles/              # Global stylesheet
+├── .github/workflows/   # GitHub Actions workflow
+├── next.config.js
+├── package.json
+└── server.js            # Optional custom Next.js server
 ```
 
-### Running the Project Locally
-- 1 Install dependencies
-```npm install```
+## Run locally
 
-- 2 Start development server
-```npm run dev```
+Install dependencies and start the development server:
 
-- The site will be available at:
-```http://localhost:3000```
-
-### Building for Production
-
-PuzzlePaddy is deployed as a Node.js server application.
-
-- 1 Build the app
-```npm run build```
-
-- 2 Start the server
-```npm start```
-
-This runs the Next.js server with API routes and SSR capabilities.
-
-- 3 Deployment
-
-Automatic deployment via webhook to Node.js hosting.
-
-### Static vs Dynamic Pages
-After running ```npm run build```, the Next.js server will generate static HTML pages for each page in the ```/pages``` directory.  
-
-[//]: # (The contact page is an example of a dynamic page, and requires an SSR deployment.  )
-After building, the file structure will look a little like this:
-
-```
-Route (pages)                                Size  First Load JS    
-┌ ○ /                                       877 B        99.3 kB
-├   /_app                                     0 B        98.5 kB
-├ ○ /404                                  1.27 kB        99.7 kB
-├ ○ /about                                  305 B        98.8 kB
-├ ƒ /api/contact                              0 B        98.5 kB
-├ ○ /contact                              4.87 kB         103 kB
-├ ○ /games                                  636 B        99.1 kB
-├ ○ /games/dog-rescue                     3.33 kB         102 kB
-├ ○ /games/hangman                        1.44 kB        99.9 kB
-├ ○ /games/nonogram                       1.29 kB        99.7 kB
-├ ○ /games/number-guess                   1.92 kB         100 kB
-├ ○ /games/snake                          1.59 kB         100 kB
-├ ○ /games/tictactoe                      1.73 kB         100 kB
-├ ○ /puzzles                                612 B        99.1 kB
-├ ○ /puzzles/mastermind                   1.54 kB         100 kB
-├ ○ /puzzles/mini-sudoku                  2.06 kB         101 kB
-├ ○ /puzzles/sliding-tile                 1.31 kB        99.8 kB
-└ ○ /puzzles/word-scramble                1.29 kB        99.7 kB
-+ First Load JS shared by all              103 kB
-  ├ chunks/framework-acd67e14855de5a2.js  57.7 kB
-  ├ chunks/main-c52fafc302c2483a.js         35 kB
-  └ other shared chunks (total)           10.7 kB
-
-○  (Static)   prerendered as static content
-ƒ  (Dynamic)  server-rendered on demand```
+```sh
+npm install
+npm run dev
 ```
 
-### Security Notes
+Open <http://localhost:3000>.
 
-Do NOT commit:
-- .env files or secrets
-- .next/, node_modules/, and .idea/ are excluded (see .gitignore)
+To build and run the production app:
 
-Server includes API routes for contact form and dynamic functionality
+```sh
+npm run build
+npm start
+```
 
-### Roadmap
+The start script runs `next start -p $PORT`; set the `PORT` environment variable in the shell or hosting environment before starting the production server.
 
-- Upgrade navigation component and mobile menu
-- Add colour palette + consistent brand theme
-- Add more interactive components
-- Add more games
-- Add more puzzles
-- Add more pages
-- Add more styling
-- Add more accessibility features
+## Contact form configuration
 
-### Contributing
+The legacy `/contact-old` form and `/api/contact` endpoint require these environment variables:
 
-This is an ongoing personal project.
-Feel free to fork the repository or submit suggestions.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | reCAPTCHA site key used by the form |
+| `RECAPTCHA_SECRET_KEY` | Server-side reCAPTCHA verification |
+| `EMAIL_HOST` | SMTP server host |
+| `EMAIL_PORT` | SMTP server port |
+| `EMAIL_USER` | SMTP username and sender address |
+| `EMAIL_PASS` | SMTP password |
 
-### License
-This repository is licensed under the AGPL-3.0 License. See LICENSE file for details.
+The current contact page only provides external contact links, so the form is not part of the default contact-page experience.
 
-### Contact
+## Deployment
 
-By: Michael McKibbin www.michaelmckibbin.com
+After a push to the repository, GitHub Actions runs the build and tests and initiates deployment. The deployment is built on the hosting server, currently Hostinger, which serves the production site.
 
-GitHub: https://github.com/MichaelMcKibbin
+## Tests
 
-LinkedIn: https://www.linkedin.com/in/michaelkevinmckibbin/
+Game utility tests are located alongside their implementations in `lib/`. GitHub Actions runs the project's build and tests after changes are pushed to the repository.
 
-Website: https://puzzlepaddy.com
+## License
+
+This repository is licensed under the AGPL-3.0 License. See [LICENSE](LICENSE) for details.
+
+## Contact
+
+Michael McKibbin: <https://michaelmckibbin.com>
+
+GitHub: <https://github.com/MichaelMcKibbin>
+
+LinkedIn: <https://www.linkedin.com/in/michaelkevinmckibbin/>
