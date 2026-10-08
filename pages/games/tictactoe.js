@@ -111,6 +111,14 @@ export default function TicTacToePage() {
     const [gameOver, setGameOver] = useState(false);
     const [vsComputer, setVsComputer] = useState(false);
     const [difficulty, setDifficulty] = useState('medium');
+    const [showInstructions, setShowInstructions] = useState(false);
+
+    useEffect(() => {
+        if (!showInstructions) return;
+        const onKeyDown = (e) => { if (e.key === 'Escape') setShowInstructions(false); };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [showInstructions]);
 
     useEffect(() => {
         const result = calculateWinner(squares);
@@ -243,8 +251,52 @@ export default function TicTacToePage() {
                     >
                         New Game
                     </button>
+                    <button
+                        onClick={() => setShowInstructions(true)}
+                        className="mt-3 px-6 py-3 bg-white text-indigo-700 font-semibold rounded-lg border border-indigo-300 hover:bg-indigo-50 transition-colors shadow-md"
+                    >
+                        Instructions
+                    </button>
                 </div>
             </div>
+            {showInstructions && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+                    onClick={() => setShowInstructions(false)}
+                >
+                    <div
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="instructions-title"
+                        className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <h2 id="instructions-title" className="text-2xl font-bold text-indigo-800 mb-3">How to Play</h2>
+                                                <audio controls autoPlay className="w-full mb-4">
+                                                    <source src="/audio/tictactoe-instructions.mp3" type="audio/mpeg" />
+                                                    Your browser does not support audio playback.
+                                                </audio>                       
+
+                        <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Players take turns placing X or O in an empty square. X goes first.</li>
+                            <li>Get three of your marks in a row — across, down, or diagonally — to win.</li>
+                            <li>If all nine squares fill up with no winner, the game is a draw.</li>
+                            <li>Choose <strong>2 Players</strong> to play locally, or <strong>vs Computer</strong> and pick Easy, Medium or Hard.</li>
+                            <li>Tip: the center and corners are the strongest opening squares.</li>
+                            <li>Tip: always check whether your opponent is one move from winning, and block them.</li>
+                            <li>Tip: try to create two threats at once — your opponent can only block one.</li>
+                            <li>The board resets automatically after each game, or press <strong>New Game</strong> any time.</li>
+                        </ul>
+                        <button
+                            autoFocus
+                            onClick={() => setShowInstructions(false)}
+                            className="mt-5 w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
+                        >
+                            Got it
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

@@ -16,6 +16,7 @@ Live site: <https://puzzlepaddy.com/>
 - Eleven game pages: 2048, Dog Rescue, Four in a Row, Hangman, Lights Out, Nonogram, Number Guessing, Snake, Sokoban, Tic Tac Toe, and Word Ladder.
 - Four puzzle pages: Mastermind, Mini Sudoku, Sliding Tile, and Word Scramble.
 - Browser-based game state; some games also save progress or best scores in local storage.
+- Instructions popups on some game pages (currently Tic Tac Toe), with an optional audio narration of the instructions.
 - A contact page with links to the site owner's website and LinkedIn.
 
 Sokoban has its own game page and is featured on the home page, but is not currently listed on `/games`. Word Ladder and Nonogram have game pages linked from `/games`, but are not currently featured on the home page.
@@ -33,6 +34,10 @@ The current `/contact` page does not contain a form. The older form remains at `
 | Email integration | Nodemailer |
 | CI workflow | GitHub Actions with Node.js 20 |
 
+## Audio instructions
+
+Some instructions popups include an audio player that reads the instructions aloud. The audio files are text-to-speech recordings created with [ElevenLabs](https://elevenlabs.io/) and stored as MP3 files in `public/audio/` (for example, `public/audio/tictactoe-instructions.mp3`). The player uses `autoPlay`, so the narration starts when the popup opens; users can pause it with the player controls, and if a browser blocks autoplay they can press play manually. If autoplay is not required, omit `autoPlay` and use `preload="none"` instead so audio is only downloaded when a user presses play.
+
 ## Project structure
 
 ```text
@@ -40,7 +45,7 @@ puzzlepaddy/
 ├── data/                # Word lists, themes, and Sokoban levels
 ├── lib/                 # Game utilities and utility tests
 ├── pages/               # Page routes and the contact API route
-├── public/              # Images and other static assets
+├── public/              # Images, audio, and other static assets
 ├── styles/              # Global stylesheet
 ├── .github/workflows/   # GitHub Actions workflow
 ├── next.config.js
